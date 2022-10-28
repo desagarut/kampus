@@ -3,7 +3,7 @@
 	<div class="float-right d-none d-sm-block hidden-xs"> <b>Version</b>
 		<?= AmbilVersi() ?> <span class="logo-mini logo-text" style="padding-top:7px"><img src="<?= gambar_institusi($desa['logo']); ?>" class="img-circle logo-desa" alt="User Image" width="30px"></span>
 	</div>
-	<span class="logo-mini logo-text" style="padding-top:7px"><img src="<?= gambar_institusi($desa['logo']); ?>" class="img-logo" alt="User Image" width="30px"></span> <a href="https://desagarut.net" target="_blank"></a> Sistem Informasi Sekolah Tinggi Hukum Garut <strong><a href="https://sthgarut.ac.id" target="_blank"></a>.</strong>
+	<span class="logo-mini logo-text" style="padding-top:7px"><img src="<?= gambar_institusi($desa['logo']); ?>" class="img-logo" alt="User Image" width="30px"></span> <a href="#" target="_blank"></a> Sistem Informasi <?= strtoupper($header['nama_instansi']) ?> <strong><a href="#" target="_blank"></a>.</strong>
 </footer>
 
 <!-- jQuery UI 1.11.4 -->
