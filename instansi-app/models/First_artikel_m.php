@@ -258,7 +258,7 @@ class First_artikel_m extends CI_Model {
 	private function sql_gambar_slide_show($gambar)
 	{
 		$this->db
-			->select('id, judul, gambar, slug, YEAR(tgl_upload) as thn, MONTH(tgl_upload) as bln, DAY(tgl_upload) as hri')
+			->select('id, id_kategori, judul, gambar, slug, YEAR(tgl_upload) as thn, MONTH(tgl_upload) as bln, DAY(tgl_upload) as hri')
 			->from('artikel')
 			->where('enabled', 1)
 			->where('headline', 3)
