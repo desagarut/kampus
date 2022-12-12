@@ -24,7 +24,7 @@
 								<h5 class="mb-4"><?= $data['judul'] ?></h5>
 							</div>
 							<div class="text-justify" style="padding-left: 15px; padding-right:15px;">
-								<p><?= $data['isi'] ?></p>
+								<p><?= potong_teks($data['isi'], 150) ?></p>
 							</div>
 							<div class="d-flex border-top">
 								<small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i><?= $data['owner'] ?></small>
