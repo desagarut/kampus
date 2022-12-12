@@ -1,6 +1,6 @@
 
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-
+<?php if(is_file($file_gambar)) : ?>
 <!-- Team Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -33,6 +33,7 @@
         </div>
     </div>
 </div>
+<? endif;?>
 <!-- Team End -->
 
 
