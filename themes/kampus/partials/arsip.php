@@ -21,16 +21,10 @@
 								</div>
 							</div>
 							<div class="text-center p-4 pb-0">
-								<h3 class="mb-0"><?= $data['judul'] ?></h3>
-								<div class="mb-3">
-									<small class="fa fa-star text-primary"></small>
-									<small class="fa fa-star text-primary"></small>
-									<small class="fa fa-star text-primary"></small>
-									<small class="fa fa-star text-primary"></small>
-									<small class="fa fa-star text-primary"></small>
-									<small>(123)</small>
-								</div>
-								<h5 class="mb-4"><?= $data['isi'] ?></h5>
+								<h5 class="mb-4"><?= $data['judul'] ?></h5>
+							</div>
+							<div class="text-justify" style="padding-left: 15px; padding-right:15px;">
+								<p><?= $data['isi'] ?></p>
 							</div>
 							<div class="d-flex border-top">
 								<small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i><?= $data['owner'] ?></small>
