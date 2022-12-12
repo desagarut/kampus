@@ -1,6 +1,5 @@
 
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-<?php if ($aparatur_desa) : ?>
 <!-- Team Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -33,7 +32,6 @@
         </div>
     </div>
 </div>
-<?php endif;?>
 
 <!-- Team End -->
 
