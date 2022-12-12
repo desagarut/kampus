@@ -1,71 +1,45 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-<?php $article = $single_artikel ?>
 
+<!-- Courses Start -->
 <div class="container-xxl py-5">
 	<div class="container">
+		<div class="row g-4 justify-content-center">
+		<?php if ($artikel) : ?>
+        <?php foreach ($artikel as $article) : ?>
+          <?php $data['article'] = $article ?>
+          <?php $url = site_url('artikel/' . buat_slug($article)) ?>
+          <?php $abstract = potong_teks(strip_tags($article['isi']), 200) ?>
+          <?php $image = ($article['gambar'] && is_file(LOKASI_FOTO_ARTIKEL . 'sedang_' . $article['gambar'])) ?
+            AmbilFotoArtikel($article['gambar'], 'sedang') :
+            base_url($this->theme_folder . '/' . $this->theme . '/assets/img/placeholder.png');
+          ?>
 
-		<div class="col-md-12 col-12">
-			<div class="product-images">
-				<main id="gallery">
-					<div class="main-img">
-						<?php if ($article['gambar'] && is_file(LOKASI_FOTO_ARTIKEL . 'sedang_' . $article['gambar'])) : ?>
-							<img src="<?= AmbilFotoArtikel($article['gambar'], 'sedang') ?>" alt="<?= $article['judul'] ?>" id="current">
-						<?php endif ?>
-					</div>
-				</main>
-			</div>
-			<div class="product-details-info">
-				<div class="single-block">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="info-body custom-responsive-margin">
-								<h4> <a href="#">
-										<?= $article['judul'] ?>
-									</a> </h4>
-							</div>
-							<div class="row align-items-center">
-								<div class="nav-social">
-									<a href="#">
-										Penulis: <?= $article['owner'] ?>
-									</a> - <a href="#">
-										Terbit: <?= tgl_indo($article['tgl_upload']) ?>
-									</a> -
-									<?php if ($article['kategori']) : ?>
-										<a href="<?= site_url('first/kategori/' . $article['kat_slug']) ?>">
-											Kategori: <?= $article['kategori'] ?>
-										</a> -
-									<?php endif ?>
-									<a href="#">
-										dilihat: <?= hit($article['hit']) ?>
-									</a>
+					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+						<div class="course-item bg-light">
+							<div class="position-relative overflow-hidden">
+								<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar' . $i], 'sedang') ?>" alt="<?= $article['judul'] ?>">
+								<div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+									<a href="<?= site_url('artikel/' . buat_slug($article)) ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+									<a href="<?= site_url('artikel/' . buat_slug($article)) ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
 								</div>
 							</div>
-							<div class="entry-content">
-								<p>
-									<?= $article['isi'] ?>
-									<?php for ($i = 1; $i <= 3; $i++) : ?>
-									<?php endfor ?>
-									<?php if ($article['dokumen']) : ?>
-								<div class="content__attachment --mt-4"> <strong>Dokumen Lampiran</strong> <a href="<?= base_url(LOKASI_DOKUMEN . $article['dokumen']) ?>" class="content__attachment__link"> <i class="fa fa-cloud-download content__attachment__icon"></i> <span>
-											<?= $article['link_dokumen'] ?>
-										</span> </a> </div>
-							<?php endif ?>
-							</p>
+							<div class="text-center p-4 pb-0">
+								<h5 class="mb-4"><?= $article['judul'] ?></h5>
 							</div>
-							<div class="entry-footer clearfix">
-								<div class="float-left"> <i class="icofont-folder"></i>
-									<ul class="cats">
-										<li><a href="<?= site_url('first/kategori/' . $article['kat_slug']) ?>">
-												<?= $article['kategori'] ?>
-											</a></li>
-									</ul>
-								</div>
-								<div class="float-right share"> <a href="http://twitter.com/share?url=<?= site_url('artikel/' . buat_slug($article)) ?>" title="Share on Twitter"><i class="icofont-twitter"></i></a> <a href="http://www.facebook.com/sharer.php?u=<?= site_url('artikel/' . buat_slug($article)) ?>" title="Share on Facebook"><i class="icofont-facebook"></i></a> <a href="https://telegram.me/share/url?url=<?= site_url('artikel/' . buat_slug($article)) ?>&text=<?= $article["judul"]; ?>" title="Share on Telegram"><i class="icofont-telegram"></i></a> <a href="https://api.whatsapp.com/send?text=<?= site_url('artikel/' . buat_slug($article)) ?>" title="Share on Whatsapp"><i class="icofont-whatsapp"></i></a> </div>
+							<div class="text-justify" style="padding-left: 15px; padding-right:15px;">
+								<p><?= potong_teks($article['isi'], 100) ?></p>
+							</div>
+							<div class="d-flex border-top">
+								<small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i><?= $article['owner'] ?></small>
+								<small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i><?= tgl_indo($article['tgl_upload']) ?></small>
+								<small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i><?= $article['hit'] ?></small>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+
+				<?php endforeach; ?>
+			<?php endif; ?>
+
 		</div>
 	</div>
 </div>
