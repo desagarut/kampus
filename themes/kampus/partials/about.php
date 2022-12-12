@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="row g-5">
-                <?php $this->load->view($folder_themes .'/partials/artikel') ?>
+                <?php $this->load->view($folder_themes .'/partials/artikel_single') ?>
             </div>
         </div>
     </div>
