@@ -7,6 +7,8 @@
 <?php $this->load->view($folder_themes .'/partials/courses') ?>
 <?php if ($aparatur_desa) : ?>
     <?php $this->load->view($folder_themes .'/partials/team') ?>
+    <?php else: ?>
+        <?php $this->load->view($folder_themes .'/partials/courses') ?>
 <?php endif;?>
 
 <?php $this->load->view($folder_themes .'/partials/testimonial') ?>
