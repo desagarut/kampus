@@ -1,6 +1,6 @@
 
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-<?php if (!empty($aparatur_desa)): ?>
+<?php if ($aparatur_desa) : ?>
 <!-- Team Start -->
 <div class="container-xxl py-5">
     <div class="container">
