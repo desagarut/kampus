@@ -71,34 +71,6 @@ class First extends Web_Controller {
 		$this->load->library('upload');
 	}
 
-	// public function auth()
-	// {
-	// 	if ($_SESSION['mandiri_wait'] != 1)
-	// 	{
-	// 		$this->first_m->insidega();
-	// 	}
-	// 	if ($_SESSION['mandiri'] == 1)
-	// 	{
-	// 		redirect('mandiri_web/mandiri/1/1');
-	// 	}
-	// 	else
-	// 	{
-	// 		redirect();
-	// 	}
-	// }
-
-	// public function logout()
-	// {
-	// 	$this->first_m->logout();
-	// 	redirect();
-	// }
-
-	// public function ganti()
-	// {
-	// 	$this->first_m->ganti();
-	// 	redirect();
-	// }
-
 	public function index($p=1)
 	{
 		$data = $this->includes;

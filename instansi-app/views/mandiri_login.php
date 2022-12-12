@@ -15,8 +15,6 @@
   <meta charset="UTF-8">
   <title>
     <?= $this->setting->login_title
-      . ' ' . ucwords($this->setting->sebutan_kecamatan)
-      . (($header['nama_kecamatan']) ? ' ' . $header['nama_kecamatan'] : '')
       . get_dynamic_title_page_from_path();
     ?>
   </title>
