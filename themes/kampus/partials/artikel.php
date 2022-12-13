@@ -10,7 +10,9 @@
 					<div class="main-img">
 						<?php if ($article['gambar'] && is_file(LOKASI_FOTO_ARTIKEL . 'sedang_' . $article['gambar'])) : ?>
 							<img src="<?= AmbilFotoArtikel($article['gambar'], 'sedang') ?>" alt="<?= $article['judul'] ?>" id="current">
-						<?php endif ?>
+							<?php else: ?>
+              <img src="<?= base_url()?>assets/files/user_pict/kuser.png" alt="Foto">
+							<?php endif ?>
 					</div>
 				</main>
 			</div>
