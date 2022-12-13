@@ -3,14 +3,14 @@
     <!-- <h3 class="card-title"> -->
     <div class="nav nav-pills nav-stacked">
       <a href="<?= site_url('web/tab/-1') ?>" class="<?= jecho($cat, -1, 'active'); ?> btn btn-block btn-info "> Semua Artikel Dinamis </a>
-</div>
+    </div>
     <!-- </h3> -->
   </div>
 </div>
 
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Kategori Artikel</h3>
+    <h3 class="card-title">Artikel Dinamis</h3>
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse">
         <i class="fas fa-minus"></i>
@@ -18,21 +18,27 @@
       <button type="button" class="btn btn-tool" data-card-widget="remove">
         <i class="fas fa-times"></i>
       </button>
-    </div>  
+    </div>
   </div>
   <div class="card-body">
     <div class="nav nav-pills flex-column">
-      <?php foreach ($list_kategori as $data) : ?>
-        <a href="<?= site_url('web/tab/$data[id]') ?>" class="<?= jecho($cat, $data['id'], 'active'); ?> btn btn-sm btn-block btn-default text-left">
-            <?= $data['kategori']; ?>
-          </a>
-        <?php foreach ($data['submenu'] as $submenu) : ?>
-          <a href="<?= site_url('web/tab/$submenu[id]') ?>" class="<?= jecho($cat, $submenu['id'], 'active'); ?> btn btn-block btn-default text-left"> &emsp;
-              <?= $submenu['kategori']; ?>
+      <ul class="nav flex-column">
+        <?php foreach ($list_kategori as $data) : ?>
+          <li class="<?= jecho($cat, $data['id'], 'active'); ?> nav-item">
+            <a href='<?= site_url("web/tab/$data[id]") ?>' class="nav-link">
+              <?= $data['kategori']; ?>
             </a>
+          </li>
+          <?php foreach ($data['submenu'] as $submenu) : ?>
+            <li class="<?= jecho($cat, $submenu['id'], 'active'); ?>">
+              <a href='<?= site_url("web/tab/$submenu[id]") ?>'>
+                &emsp;<?= $submenu['kategori']; ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
         <?php endforeach; ?>
-      <?php endforeach; ?>
-        </div>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -46,7 +52,7 @@
       <button type="button" class="btn btn-tool" data-card-widget="remove">
         <i class="fas fa-times"></i>
       </button>
-    </div>  
+    </div>
   </div>
   <div class="card-body">
     <div class="nav nav-pills flex-column">
