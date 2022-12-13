@@ -4,8 +4,8 @@
     <div class="container-xxl py-5 category">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Kurikulum</h6>
-                <h1 class="mb-5">Konsentrasi</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">k o n s e n t r a s i</h6>
+                <h1 class="mb-5">Bidang Ilmu</h1>
             </div>
             <div class="row g-3">
                 <div class="col-lg-7 col-md-6">
@@ -14,8 +14,8 @@
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/cat-1.jpg")?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Web Design</h5>
-                                    <small class="text-primary">49 Courses</small>
+                                    <h5 class="m-0">Hukum Pidana</h5>
+                                    <small class="text-primary">49 Mata Kuliah</small>
                                 </div>
                             </a>
                         </div>
@@ -23,8 +23,8 @@
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/cat-2.jpg")?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Graphic Design</h5>
-                                    <small class="text-primary">49 Courses</small>
+                                    <h5 class="m-0">Hukum Perdata</h5>
+                                    <small class="text-primary">49 Mata Kuliah</small>
                                 </div>
                             </a>
                         </div>
@@ -32,8 +32,8 @@
                             <a class="position-relative d-block overflow-hidden" href="">
                                 <img class="img-fluid" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/cat-3.jpg")?>" alt="">
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Video Editing</h5>
-                                    <small class="text-primary">49 Courses</small>
+                                    <h5 class="m-0">Hukum Tata Usaha Negara</h5>
+                                    <small class="text-primary">49 Mata Kuliah</small>
                                 </div>
                             </a>
                         </div>
@@ -43,8 +43,8 @@
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
                         <img class="img-fluid position-absolute w-100 h-100" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/cat-4.jpg")?>" alt="" style="object-fit: cover;">
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
-                            <h5 class="m-0">Online Marketing</h5>
-                            <small class="text-primary">49 Courses</small>
+                            <h5 class="m-0">Profesi Hukum</h5>
+                            <small class="text-primary">Advocate</small>
                         </div>
                     </a>
                 </div>

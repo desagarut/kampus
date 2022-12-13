@@ -4,11 +4,11 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
+                    <a class="btn btn-link" href="http://portal.sthgarut.ac.id:8060">Siakad</a>
+                    <a class="btn btn-link" href="https://sister.lldikti4.id">Sister</a>
+                    <a class="btn btn-link" href="http://portal.sthgarut.ac.id:8100">Neo Feeder</a>
+                    <a class="btn btn-link" href="https://pddikti.kemdikbud.go.id">PDDIKTI</a>
+                    <a class="btn btn-link" href="https://pin.kemdikbud.go.id">P I N</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
