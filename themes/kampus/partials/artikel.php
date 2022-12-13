@@ -7,12 +7,12 @@
 		<div class="col-md-12 col-12">
 			<div class="product-images">
 				<main id="gallery">
-					<div class="main-img">
-						<?php if ($article['gambar'] && is_file(LOKASI_FOTO_ARTIKEL . 'sedang_' . $article['gambar'])) : ?>
+					<div class="main-img text-center">
+						<?php if ($article['gambar']) : ?>
 							<img src="<?= AmbilFotoArtikel($article['gambar'], 'sedang') ?>" alt="<?= $article['judul'] ?>" id="current">
-							<?php else: ?>
-              <img src="<?= base_url()?>assets/files/user_pict/kuser.png" alt="Foto">
-							<?php endif ?>
+						<?php else : ?>
+							<img class="img-fluid" src="<?= base_url() ?>themes/kampus/assets/img/noimage.png" alt="Belum Ada Gambar">
+						<?php endif ?>
 					</div>
 				</main>
 			</div>

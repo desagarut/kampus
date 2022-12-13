@@ -4,20 +4,25 @@
 <div class="container-xxl py-5">
 	<div class="container">
 		<div class="row g-4 justify-content-center">
-		<?php if ($artikel) : ?>
-        <?php foreach ($artikel as $article) : ?>
-          <?php $data['article'] = $article ?>
-          <?php $url = site_url('artikel/' . buat_slug($article)) ?>
-          <?php $abstract = potong_teks(strip_tags($article['isi']), 200) ?>
-          <?php $image = ($article['gambar'] && is_file(LOKASI_FOTO_ARTIKEL . 'sedang_' . $article['gambar'])) ?
-            AmbilFotoArtikel($article['gambar'], 'sedang') :
-            base_url($this->theme_folder . '/' . $this->theme . '/assets/img/placeholder.png');
-          ?>
+			<?php if ($artikel) : ?>
+				<?php foreach ($artikel as $article) : ?>
+					<?php $data['article'] = $article ?>
+					<?php $url = site_url('artikel/' . buat_slug($article)) ?>
+					<?php $abstract = potong_teks(strip_tags($article['isi']), 200) ?>
+					<?php $image = ($article['gambar'] && is_file(LOKASI_FOTO_ARTIKEL . 'sedang_' . $article['gambar'])) ?
+						AmbilFotoArtikel($article['gambar'], 'sedang') :
+						base_url($this->theme_folder . '/' . $this->theme . '/assets/img/placeholder.png');
+					?>
 
 					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 						<div class="course-item bg-light">
-							<div class="position-relative overflow-hidden">
-								<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar' . $i], 'sedang') ?>" alt="<?= $article['judul'] ?>">
+							<div class="position-relative overflow-hidden text-center">
+								<?php if ($article['gambar']) : ?>
+									<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar' . $i], 'sedang') ?>" alt="<?= $article['judul'] ?>">
+								<?php else : ?>
+									<img class="img-fluid" src="<?= base_url() ?>themes/kampus/assets/img/noimage.png" alt="Belum Ada Gambar">
+								<?php endif; ?>
+
 								<div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
 									<a href="<?= site_url('artikel/' . buat_slug($article)) ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
 									<a href="<?= site_url('artikel/' . buat_slug($article)) ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
