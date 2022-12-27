@@ -1,6 +1,5 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-<?php  if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php $abstract = potong_teks($headline['isi'], 150); ?>
 <?php $url = site_url('artikel/'.buat_slug($headline)); ?>
 <?php $image = ($headline['gambar'] && is_file(LOKASI_FOTO_ARTIKEL.'kecil_'.$headline['gambar'])) ? 

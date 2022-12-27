@@ -28,14 +28,13 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row">
-                <form id="mainform" name="mainform" action="" method="post">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <?php $this->load->view('kategori/menu_kiri.php') ?>
-                        </div>
-                        <div class="col-md-9">
-
+            <form id="mainform" name="mainform" action="" method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <?php $this->load->view('kategori/menu_kiri.php') ?>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card">
                             <div class="card-header">
                                 <a href="<?= site_url("menu/form/$tip") ?>" class="btn btn-box btn-success btn-sm btn-sm " title="Tambah Menu Baru">
                                     <i class="fa fa-plus"></i>Tambah Menu Baru
@@ -161,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
             </form>
         </div>
 </div>

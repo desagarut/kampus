@@ -6,4 +6,4 @@
 <?php $this->load->view($folder_themes .'/partials/categories') ?>
 <?php //$this->load->view($folder_themes .'/partials/courses') ?>
 <?php $this->load->view($folder_themes .'/partials/team') ?>
-<?php $this->load->view($folder_themes .'/partials/testimonial') ?>
+<?php //$this->load->view($folder_themes .'/partials/testimonial') ?>

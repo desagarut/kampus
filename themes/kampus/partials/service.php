@@ -1,10 +1,11 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <a href="http://portal.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
@@ -12,8 +13,10 @@
                             <p>Portal Sistem Informasi Akademik - Akses untuk dosen, mahasiswa dan staf</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <a href="http://elearning.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-globe text-primary mb-4"></i>
@@ -21,8 +24,10 @@
                             <p>Akses sistem pembelajaran daring, kelas virtual, interaksi dosen & mahasiswa</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <a href="http://jurnal.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-home text-primary mb-4"></i>
@@ -30,8 +35,10 @@
                             <p>Publikasi hasil karya ilmiah dosen & mahasiswa, repository</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <a href="http://perpustakaan.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
@@ -39,8 +46,9 @@
                             <p>Koleksi buku, jurnal dan data multimedia pendukung pembelajaran</p>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
-    <!-- Service End -->
+</div>
+<!-- Service End -->

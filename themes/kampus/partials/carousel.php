@@ -35,7 +35,7 @@
                                 <h1 class="display-3 text-white animated slideInDown"><?= $gambar['judul'] ?></h1>
                                 <p class="fs-5 text-white mb-4 pb-2"><?= $gambar['id_kategori'] ?></p>
                                 <a href="<?='artikel/'.buat_slug($gambar); ?>" target="_blank" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
+                                <a href="http://portal.sthgarut.ac.id:8060/index.php/pendaftaran_pmb" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join Now</a>
                             </div>
                         </div>
                     </div>
