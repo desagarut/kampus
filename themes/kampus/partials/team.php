@@ -12,7 +12,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item bg-light">
                     <div class="overflow-hidden">
-                        <img class="img-fluid" src="<?= $data['foto'] ?>" alt="<?= $data['nama'] ?>">
+                        <img class="img-fluid" style="border-color: ;" src="<?= $data['foto'] ?>" alt="<?= $data['nama'] ?>">
                     </div>
                     <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
                         <div class="bg-light d-flex justify-content-center pt-2 px-1">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="text-center p-4">
                         <h5 class="mb-0"><?= $data['nama'] ?></h5>
-                        <small><?= $data['jabatan'] ?></small>
+                        <small><?= strtoupper($data['jabatan']) ?></small>
                     </div>
                 </div>
             </div>

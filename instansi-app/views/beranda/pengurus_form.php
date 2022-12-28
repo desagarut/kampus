@@ -294,7 +294,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-xs-12 col-sm-4 col-lg-4 control-label" for="status">Status Pegawai kecamatan</label>
+                <label class="col-xs-12 col-sm-4 col-lg-4 control-label" for="status">Status Pegawai</label>
                 <div class="btn-group col-xs-12 col-sm-8" data-toggle="buttons">
                   <label id="sx3" class="btn btn-info btn-box btn-sm col-xs-6 col-sm-5 col-lg-3 form-check-label <?php if ($pamong['pamong_status'] == '1' or $pamong['pamong_status'] == NULL) : ?>active<?php endif ?>">
                     <input id="group1" type="radio" name="pamong_status" class="form-check-input" type="radio" value="1" <?php if ($pamong['pamong_status'] == '1' or $pamong['pamong_status'] == NULL) : ?>checked <?php endif ?> autocomplete="off">
