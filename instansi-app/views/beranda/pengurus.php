@@ -112,10 +112,12 @@ td.nowrap {
                             <?php if ($this->CI->cek_hak_akses('h')): ?>
                             <td nowrap><a href="<?=site_url("pengurus/urut/$paging->page/$data[pamong_id]/1")?>" class="btn bg-olive btn-box btn-sm <?php ($data['no'] == $paging->num_rows) and print('disabled'); ?>" title="Pindah Posisi Ke Bawah"><i class="fa fa-arrow-down"></i></a> <a href="<?=site_url("pengurus/urut/$paging->page/$data[pamong_id]/2")?>" class="btn bg-olive btn-box btn-sm <?php ($data['no'] == 1 AND $paging->page == $paging->start_link) and print('disabled'); ?>" title="Pindah Posisi Ke Atas"><i class="fa fa-arrow-up"></i></a> <a href="<?= site_url("pengurus/form/$data[pamong_id]")?>" class="btn bg-orange btn-box btn-sm" title="Ubah Data"><i class="fa fa-edit"></i></a> <a href="#" data-href="<?= site_url("pengurus/delete/$data[pamong_id]")?>" class="btn bg-maroon btn-box btn-sm" title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash"></i></a>
                               <?php if ($data['pamong_status'] == '1'): ?>
+                                <br/>
                               <a href="<?= site_url("pengurus/lock/$data[pamong_id]/2")?>" class="btn bg-navy btn-box btn-sm"  title="Non Aktifkan"><i class="fa fa-unlock"></i></a>
                               <?php else: ?>
                               <a href="<?= site_url("pengurus/lock/$data[pamong_id]/1")?>" class="btn bg-navy btn-box btn-sm"  title="Aktifkan"><i class="fa fa-lock"></i></a>
                               <?php endif ?>
+                              
                               <?php if ($data['pamong_ttd'] == '1'): ?>
                               <a href="<?= site_url("pengurus/ttd/$data[pamong_id]/2")?>" class="btn bg-navy btn-box btn-sm" title="Bukan TTD a.n">a.n</a>
                               <?php else: ?>
