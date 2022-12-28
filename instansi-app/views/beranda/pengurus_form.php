@@ -28,21 +28,21 @@
         <div class="card">
           <div class="card-header"> <a href="<?= site_url() ?>pengurus" class="btn btn-box btn-info btn-sm "><i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Daftar Staf</a> </div>
           <div class="card-body">
-            <div class="form-group form-horizontal">
-              <label class="col-sm-4 col-lg-2 control-label kiri" for="status">Sumber Data Pegawai</label>
-              <div class="btn-group col-sm-8 kiri" data-toggle="buttons">
+            <div class="form-group row">
+              <label class="col-sm-3 control-label kiri" for="status">Sumber Data Pegawai</label>
+              <div class="btn-group col-sm-9 kiri" data-toggle="buttons">
                 <label for="pengurus_1" class="btn btn-info btn-box btn-sm col-sm-3 form-check-label <?php if (empty($pamong) or !empty($individu)) : ?>active<?php endif ?>">
                   <input id="pengurus_1" type="radio" name="pengurus" class="form-check-input" type="radio" value="1" <?php if (empty($pamong) or !empty($individu)) : ?>checked<?php endif; ?> autocomplete="off" onchange="pengurus_asal(this.value);">
-                  Dari Database Penduduk </label>
+                  Database Penduduk </label>
                 <label for="pengurus_2" class="btn btn-info btn-box btn-sm col-sm-3 form-check-label <?php if (!empty($pamong) and empty($individu)) : ?>active<?php endif; ?>">
                   <input id="pengurus_2" type="radio" name="pengurus" class="form-check-input" type="radio" value="2" <?php if (!empty($pamong) and empty($individu)) : ?>checked<?php endif; ?> autocomplete="off" onchange="pengurus_asal(this.value);">
                   Tidak Terdata </label>
               </div>
             </div>
             <form action="" id="main" name="main" method="POST" class="form-horizontal">
-              <div class="form-group col-sm-12">
-                <label class="col-md-4 label" for="id_pend">NIK / Nama Penduduk </label>
-                <div class="col-md-7">
+              <div class="form-group row">
+                <label class="col-sm-3 label" for="id_pend">NIK / Nama Penduduk </label>
+                <div class="col-sm-9">
                   <select class="form-control select2" id="id_pend" name="id_pend" onchange="formAction('main')" style="width:100%">
                     <option selected="selected">-- Silakan Masukan NIK / Nama--</option>
                     <?php foreach ($penduduk as $data) : ?>
@@ -65,19 +65,19 @@
           <div class="card">
             <div class="card-body">
               <?php if ($pamong['foto']) : ?>
-                <img class="profile-user-img img-responsive img-circle" src="<?= AmbilFoto($pamong['foto']) ?>" alt="Foto">
+                <img class="img-responsive text-center" src="<?= AmbilFoto($pamong['foto']) ?>" alt="Foto">
               <?php else : ?>
-                <img class="profile-user-img img-responsive img-circle" src="<?= base_url() ?>assets/files/user_pict/kuser.png" alt="Foto">
+                <img class="img-responsive text-center" src="<?= base_url() ?>assets/files/user_pict/kuser.png" alt="Foto">
               <?php endif; ?>
               <br />
               <p class="text-muted text-center"><code>(Kosongkan jika tidak ingin mengubah foto)</code></p>
               <br />
-              <div class="input-group input-group-sm">
+              <div class="input-group">
                 <input type="text" class="form-control" id="file_path2" name="foto">
                 <input type="file" class="hidden" id="file2" name="foto">
                 <input type="hidden" name="old_foto" value="<?= $pamong['foto'] ?>">
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-info btn-box" id="file_browser2"><i class="fa fa-search"></i> Browse</button>
+                <span class="input-group-btn btn-sm">
+                  <button type="button" class="btn btn-info btn-sm" id="file_browser2"><i class="fa fa-search"></i> Browse</button>
                 </span>
               </div>
             </div>

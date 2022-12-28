@@ -33,13 +33,9 @@ td.nowrap {
             <li class="breadcrumb-item active"><a href="#!">Data Pegawai</a></li>
           </ol>
         </div>
-        <!-- /.col --> 
       </div>
-      <!-- /.row --> 
     </div>
-    <!-- /.container-fluid --> 
   </div>
-  <!-- /.content-header -->
   
   <section class="content">
     <div class="container-fluid">
@@ -134,9 +130,9 @@ td.nowrap {
                             <td class="text-center"><div class="user-panel">
                                 <div class="image2">
                                   <?php if ($data['foto']): ?>
-                                  <img src="<?=AmbilFoto($data['foto'])?>" style="width:80px" class="img-circle" alt="User Image"/>
+                                  <img src="<?=AmbilFoto($data['foto'])?>" style="width:80px" class="img-responsive" alt="User Image"/>
                                   <?php else: ?>
-                                  <img src="<?= base_url()?>assets/files/user_pict/kuser.png" class="img-circle" alt="User Image"/>
+                                  <img src="<?= base_url()?>assets/files/user_pict/kuser.png" class="img-responsive" alt="User Image"/>
                                   <?php endif ?>
                                 </div>
                               </div></td>

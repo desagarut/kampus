@@ -65,7 +65,7 @@
                         <div class="footer-menu">
                             <a href="<?= site_url('') ?>">Home</a>
                             <a href="http://portal.sthgarut.ac.id">Siakad</a>
-                            <a href="">Help</a>
+                            <a href="<?= site_url('peta') ?>">Maps</a>
                             <a href="">FQAs</a>
                         </div>
                     </div>
