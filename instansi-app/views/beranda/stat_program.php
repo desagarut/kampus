@@ -23,7 +23,7 @@
                     <span class="info-box-icon bg-info elevation-3"><i class="fas fa-users"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Jumlah Mahasiswa</span>
+                        <span class="info-box-text">Data Kependudukan</span>
                         <?php foreach ($penduduk as $data) : ?>
                             <span class="info-box-number">
                                 <?= $data['jumlah'] ?>
@@ -41,8 +41,8 @@
                     <span class="info-box-icon bg-success elevation-3"><i class="fas fa-envelope-open"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Jumlah Surat Keluar</span>
-                        <?php foreach ($keluarga as $data) : ?>
+                        <span class="info-box-text">Artikel</span>
+                        <?php foreach ($artikel as $data) : ?>
                             <span class="info-box-number"><?= $data['jumlah'] ?>
                                 <small>buah</small>
                             </span>
@@ -60,12 +60,12 @@
                     <div class="info-box-content">
                         <span class="info-box-text"></span>
                         <?php foreach ($surat_masuk as $data) : ?>
-                            <span class="info-box-number">Surat Masuk: <?= $data['jumlah'] ?>
+                            <span class="info-box-number"><small>Surat Masuk:</small> <?= $data['jumlah'] ?>
                                 <small>buah</small>
                             </span>
                         <?php endforeach; ?>
                         <?php foreach ($surat_keluar as $data) : ?>
-                            <span class="info-box-number">Surat Keluar: <?= $data['jumlah'] ?>
+                            <span class="info-box-number"><small>Surat Keluar:</small> <?= $data['jumlah'] ?>
                                 <small>buah</small>
                             </span>
                         <?php endforeach; ?>

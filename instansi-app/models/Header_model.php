@@ -102,6 +102,14 @@ class Header_model extends CI_Model {
 		return $data;
 	}
 
+	public function artikel_total()
+	{
+		$sql = "SELECT COUNT(id) AS jumlah FROM artikel";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
 	// ---
 	public function get_data()
 	{
