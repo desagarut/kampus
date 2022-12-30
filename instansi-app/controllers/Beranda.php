@@ -32,19 +32,6 @@ class Beranda extends Admin_Controller {
 
 	public function index()
 	{
-	//	if ($this->release->has_internet_connection())
-	//	{
-		/*	$this->release->set_api_url('https://api.github.com/repos/sidega/sidega/releases/latest')
-				->set_interval(7)
-				->set_cache_folder(FCPATH.'instansi');
-
-			$data['update_available'] = $this->release->is_available();
-			$data['current_version'] = $this->release->get_current_version();
-			$data['latest_version'] = $this->release->get_latest_version();
-			$data['release_name'] = $this->release->get_release_name();
-			$data['release_body'] = $this->release->get_release_body();
-			*/
-	//	}
 		$data['setting_instansi'] = $this->config_model->get_data();
 		// Pengambilan data penduduk untuk ditampilkan widget Halaman Dashboard (modul Home SID)
 		$data['penduduk'] = $this->header_model->penduduk_total();
@@ -53,7 +40,9 @@ class Beranda extends Admin_Controller {
 		$data['kelompok'] = $this->header_model->kelompok_total();
 		$data['rtm'] = $this->header_model->rtm_total();
 		$data['dusun'] = $this->header_model->dusun_total();
-		$data['jumlah_surat'] = $this->surat_model->surat_total();
+		$data['surat_masuk'] = $this->header_model->jumlah_surat_masuk();
+		$data['surat_keluar'] = $this->header_model->jumlah_surat_keluar();
+		$data['pegawai'] = $this->header_model->pegawai_total();
 
 		//Tampil Pengunjung
 		$data['hari_ini'] = $this->web_pengunjung_model->get_count('1');

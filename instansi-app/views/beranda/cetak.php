@@ -24,7 +24,7 @@
 		<!-- Print Body -->
 			<div id="body">
 				<div align="center">
-					<h3> BUKU DATA APARAT PEMERINTAHAN <?= strtoupper($this->setting->sebutan_desa) ?> </h3>
+					<h3> DATA PEGAWAI <?= strtoupper($this->setting->sebutan_desa) ?> </h3>
 				</div>
 				<table>
 					<col span="12" style="width: 7.75%;">

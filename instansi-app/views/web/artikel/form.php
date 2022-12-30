@@ -71,6 +71,7 @@
 							<?php $this->load->view('web/artikel/menu'); ?>
 						</div>
 						<div class="col-md-6">
+							<div class="card">
 							<div class="card-header">
 								<a href="<?= site_url("web") ?>" class="btn btn-box btn-info btn-sm btn-sm " title="Tambah Artikel">
 									<i class="fa fa-arrow-circle-left "></i>Kembali ke Daftar Artikel
@@ -82,7 +83,7 @@
 							<div class="card-body">
 								<div class="form-group">
 									<label class="control-label" for="judul">Judul Artikel</label>
-									<input id="judul" name="judul" class="form-control input-sm required" type="text" placeholder="Judul Artikel" minlength="5" maxlength="100" value="<?= htmlspecialchars($artikel['judul']) ?>"></input>
+									<input id="judul" name="judul" class="form-control input-sm required" type="text" placeholder="Judul Artikel" minlength="5" value="<?= htmlspecialchars($artikel['judul']) ?>"></input>
 									<span class="help-block"><code>Judul artikel minimal 5 karakter dan maksimal 100 karakter</code></span>
 								</div>
 								<div class="form-group">
@@ -91,6 +92,7 @@
 									<?= $artikel['isi'] ?>
 								</textarea>
 								</div>
+							</div>
 							</div>
 						</div>
 						<div class="col-md-3">

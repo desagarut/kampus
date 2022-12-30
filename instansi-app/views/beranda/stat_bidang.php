@@ -43,7 +43,7 @@
 
         <!-- /.col -->
         <div class="col-md-3 col-sm-3 col-xs-3">
-            <a href="<?= site_url('keluarga/clear') ?>" class="small-card-footer" title="Lihat Daftar Keluarga">
+            <a href="<?= site_url('surat_keluar') ?>" class="small-card-footer" title="Lihat Daftar Keluarga">
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
 
@@ -69,20 +69,22 @@
                     <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-home"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Jumlah Surat Masuk</span>
+                        <span class="info-box-text">Jumlah Surat</span>
                         <?php foreach ($rtm as $data) : ?>
-                            <span class="info-box-number"><?= $data['jumlah'] ?>
+                            <span class="info-box-number">Masuk : <?= $data['jumlah'] ?>
                                 <small>buah</small>
                             </span>
                         <?php endforeach; ?>
+                        <?php foreach ($rtm as $data) : ?>
+                            <span class="info-box-number">Keluar : <?= $data['jumlah'] ?>
+                                <small>buah</small>
+                            </span>
+                        <?php endforeach; ?>
+
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
-            <!-- /.info-box -->
         </div>
-        <!-- /.col -->
-        <!-- seo end -->
     </div>
 
 </div>

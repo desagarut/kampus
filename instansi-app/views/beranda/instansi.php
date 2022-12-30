@@ -15,11 +15,8 @@
             <li class="breadcrumb-item active"><a href="#!">STH Garut</a></li>
           </ol>
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </div>
-    <!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
 
