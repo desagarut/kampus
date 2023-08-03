@@ -1,8 +1,7 @@
+<div class="card-header">
 
-	<div class="card-header">
+</div>
+<div class="card-body">
 
-	</div>
-	<div class="card-body">
-
-	</div>
+</div>
 </div>

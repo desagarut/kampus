@@ -11,17 +11,17 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h4>Surat Keluar</h4>
+					<h4><?= $subtitle ?></h4>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="<?= site_url() ?>beranda">Beranda</a></li>
-						<li class="breadcrumb-item"><a href="#!">Pembangunan Desa</a></li>
+						<li class="breadcrumb-item"><a href="#!">Administrasi</a></li>
 						<li class="breadcrumb-item active"><a href="#!"><?= $subtitle ?></a></li>
 					</ol>
-				</div><!-- /.col -->
-			</div><!-- /.row -->
-		</div><!-- /.container-fluid -->
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- /.content-header -->
 

@@ -50,7 +50,7 @@ class Surat_masuk extends Admin_Controller {
 		$data['tahun_penerimaan'] = $this->surat_masuk_model->list_tahun_penerimaan();
 		$data['keyword'] = $this->surat_masuk_model->autocomplete();
 		$data['main_content'] = 'surat_masuk/table';
-		$data['subtitle'] = "Buku Agenda - Surat Masuk";
+		$data['subtitle'] = "Buku Arsip Surat Masuk";
 		$data['selected_nav'] = 'agenda_masuk';
 		$this->set_minsidebar(1);
 

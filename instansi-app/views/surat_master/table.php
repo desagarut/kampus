@@ -20,7 +20,7 @@
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="<?= site_url('beranda') ?>"><i class="fa fa-home"></i> Home</a></li>
-						<li class="breadcrumb-item active">Format Surat Desa</li>
+						<li class="breadcrumb-item active">Format Surat </li>
 					</ol>
 				</div>
 				<!-- /.col -->
