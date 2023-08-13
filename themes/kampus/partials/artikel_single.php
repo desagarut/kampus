@@ -4,6 +4,18 @@
 <div class="container-xxl py-5">
 	<div class="container">
 		<div class="row g-4 justify-content-center">
+			<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+				<div class="course-item bg-light">
+					<div class="position-relative overflow-hidden text-center">
+						<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1823410826720847" crossorigin="anonymous"></script>
+						<!-- STH Garut - artikel Single -->
+						<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1823410826720847" data-ad-slot="5589399959" data-ad-format="auto" data-full-width-responsive="true"></ins>
+						<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
+			</div>
 			<?php if ($artikel) : ?>
 				<?php foreach ($artikel as $article) : ?>
 					<?php $data['article'] = $article ?>
