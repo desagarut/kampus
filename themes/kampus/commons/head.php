@@ -55,7 +55,7 @@
         const BASE_URL = '<?= base_url() ?>';
     </script>
 
-    // Google Ads
+    <!-- Google Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1823410826720847" crossorigin="anonymous"></script>
 
     <!-- Google Web Fonts -->
