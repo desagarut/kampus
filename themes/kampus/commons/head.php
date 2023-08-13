@@ -19,7 +19,7 @@
     <meta name='designer' content='Bambang Andri H' />
     <meta name='theme:designer' content='Bambang Andri H' />
     <meta name="theme:version" content="<?= THEME_VERSION ?>" />
-    <meta name="theme-color" content="#00C" />
+    <meta name="theme-color" content="red" />
     <meta name="keywords" content="sidega, SIDEGA, SIDeGa, sistem informasi desa garut, web, blog, informasi, website, tema sidega-blue, desa garut, kelurahan garut, kecamatan garut, kabupaten garut, Jawa Barat, indonesia" />
     <meta property="og:site_name" content="<?= $kampus_title ?>" />
     <meta property="og:type" content="article" />
