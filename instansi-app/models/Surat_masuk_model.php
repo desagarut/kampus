@@ -356,12 +356,19 @@ class Surat_masuk_model extends MY_Model {
 		$this->load->model('wilayah_model');
     $ref_disposisi[] = 'Sekretaris '.ucwords($this->setting->sebutan_desa);
     array_push($ref_disposisi,
-      'Kasi Pemerintahan',
-      'Kasi Kesejahteraan',
-      'Kasi Pelayanan',
-      'Kaur Keuangan',
-      'Kaur Tata Usaha dan Umum',
-      'Kaur Perencanaan');
+      'Wakil Ketua I Bidang Akademik',
+      'Wakil Ketua II Bidang Keuangan Umum & Kepegawaian',
+      'Wakil Ketua II Kemahasiswaan',
+	  'Ketua Program Studi S1 Ilmu Hukum',
+      'Ketua Lembaga Penelitian & Pengabdian Masyarakat',
+      'Ketua Lembaga Penjaminan Mutu',
+      'Kepala UPT Perpustakaan',
+	  'Kepala UPT Laboratorium Hukum',
+	  'Staf Bidang Akademik',
+	  'Staf Bidang Umum',
+	  'Staf Bidang Kepegawaian',
+	  'Staf Bidang Keuangan',
+	  'Staf Bidang Kemahasiswaan');
     $list_dusun = $this->wilayah_model->list_data();
     foreach ($list_dusun as $dusun)
     {
