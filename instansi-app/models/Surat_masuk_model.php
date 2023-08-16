@@ -357,7 +357,7 @@ class Surat_masuk_model extends MY_Model {
     $ref_disposisi[] = 'Wakil Ketua I Bidang Akademik ';
     array_push($ref_disposisi,
       'Wakil Ketua II Bidang Keuangan Umum & Kepegawaian',
-      'Wakil Ketua II Kemahasiswaan',
+      'Wakil Ketua III Kemahasiswaan',
 	  'Ketua Program Studi S1 Ilmu Hukum',
       'Ketua Lembaga Penelitian & Pengabdian Masyarakat',
       'Ketua Lembaga Penjaminan Mutu',
