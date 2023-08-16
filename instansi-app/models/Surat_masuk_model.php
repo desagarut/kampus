@@ -354,9 +354,8 @@ class Surat_masuk_model extends MY_Model {
 	public function get_pengolah_disposisi()
 	{
 		$this->load->model('wilayah_model');
-    $ref_disposisi[] = 'Sekretaris '.ucwords($this->setting->sebutan_desa);
+    $ref_disposisi[] = 'Wakil Ketua I Bidang Akademik ';
     array_push($ref_disposisi,
-      'Wakil Ketua I Bidang Akademik',
       'Wakil Ketua II Bidang Keuangan Umum & Kepegawaian',
       'Wakil Ketua II Kemahasiswaan',
 	  'Ketua Program Studi S1 Ilmu Hukum',
