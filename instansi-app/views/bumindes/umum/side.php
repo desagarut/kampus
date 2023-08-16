@@ -1,4 +1,19 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Menu</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+    </div>
+  </div>
+  <div class="card-body">
+    <ul class="nav nav-pills nav-stacked">
+      <li class=" <?php ($this->tab_ini == 2) and print('active') ?>"><a href="<?= site_url('surat_masuk/clear') ?>">Surat Masuk</a></li>
+    </ul>
+  </div>
+</div>
+
 <?php if ($this->CI->cek_hak_akses('u')) : ?>
+
   <div class="card-header">
     <h3 class="card-title">Menu</h3>
     <div class="card-tools">
@@ -18,4 +33,4 @@
       </ul>
     </div>
   </div>
-  <?php endif; ?>
+<?php endif; ?>
