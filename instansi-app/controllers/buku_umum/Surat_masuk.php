@@ -16,7 +16,6 @@ class Surat_masuk extends Admin_Controller {
 		$this->modul_ini = 15;
 		$this->sub_modul_ini = 57;
 		$this->tab_ini = 2;
-		$this->set_minsidebar(0);
 
 	}
 
@@ -54,7 +53,7 @@ class Surat_masuk extends Admin_Controller {
 		$data['main_content'] = 'surat_masuk/table';
 		$data['subtitle'] = "Buku Arsip Surat Masuk";
 		//$data['selected_nav'] = 'agenda_masuk';
-		$this->set_minsidebar(1);
+		$this->set_minsidebar(0);
 
 		//$this->load->view('header', $this->header);
 		//$this->load->view('nav', $nav);
@@ -95,7 +94,7 @@ class Surat_masuk extends Admin_Controller {
 		$ekstensiFile = explode('.', end($berkas));
 		$ekstensiFile = end($ekstensiFile);
 		$data['surat_masuk']['berkas_scan'] = $namaFile.'.'.$ekstensiFile;
-		$this->set_minsidebar(1);
+		$this->set_minsidebar(0);
 
 		$this->render('surat_masuk/form', $data);
 	}

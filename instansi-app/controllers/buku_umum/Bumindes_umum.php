@@ -44,7 +44,7 @@ class Bumindes_umum extends Admin_Controller {
 
 		$this->load->view('header', $header);
 		$this->load->view('nav');
-		$this->load->view('bumindes/umum/main', $data);
+		$this->load->view('surat_masuk/table', $data);
 		$this->load->view('footer');
 	}
 

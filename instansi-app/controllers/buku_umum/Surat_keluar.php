@@ -14,7 +14,7 @@ class Surat_keluar extends Admin_Controller {
 
 		$this->load->model('penomoran_surat_model');
 		$this->modul_ini = 15;
-		$this->sub_modul_ini = 301;
+		$this->sub_modul_ini = 58;
 	}
 
 	public function clear($id = 0)
@@ -49,12 +49,15 @@ class Surat_keluar extends Admin_Controller {
 		$data['main_content'] = 'surat_keluar/table';
 		$data['subtitle'] = "Buku Agenda - Surat Keluar";
 		$data['selected_nav'] = 'agenda_keluar';
-		$this->set_minsidebar(1);
+		$this->set_minsidebar(0);
 
-		$this->load->view('header', $this->header);
-		$this->load->view('nav', $nav);
-		$this->load->view('bumindes/umum/main', $data);
-		$this->load->view('footer');
+	//	$this->load->view('header', $this->header);
+	//	$this->load->view('nav', $nav);
+	//	$this->load->view('bumindes/umum/main', $data);
+	//	$this->load->view('footer');
+
+		$this->render('surat_keluar/table', $data);
+
 	}
 
 	public function form($p = 1, $o = 0, $id = '')
@@ -82,7 +85,7 @@ class Surat_keluar extends Admin_Controller {
 		$ekstensiFile = explode('.', end($berkas));
 		$ekstensiFile = end($ekstensiFile);
 		$data['surat_keluar']['berkas_scan'] = $namaFile.'.'.$ekstensiFile;
-		$this->set_minsidebar(1);
+		$this->set_minsidebar(0);
 
 		$this->render('surat_keluar/form', $data);
 	}

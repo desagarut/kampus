@@ -125,6 +125,7 @@ class Surat_masuk_model extends MY_Model {
 	 */
 	public function insert()
 	{
+
 		// Ambil semua data dari var. global $_POST
 		$data = $this->input->post(NULL);
 		unset($data['url_remote']);
@@ -206,6 +207,7 @@ class Surat_masuk_model extends MY_Model {
 		// Set session berdasarkan hasil operasi
 		$_SESSION['success'] = $indikatorSukses ? 1 : -1;
 		$_SESSION['error_msg'] = $_SESSION['success'] === 1 ? NULL : ' -> '.$uploadError;
+
 	}
 
 	private function validasi_surat_masuk(&$data)
@@ -531,5 +533,3 @@ class Surat_masuk_model extends MY_Model {
 	}
 
 }
-
-?>
