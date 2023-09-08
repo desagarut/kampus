@@ -21,16 +21,14 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <?php $this->load->view('beranda/peta.php'); ?>
         <?php $this->load->view('beranda/stat_program.php'); ?>
-
-        <?php //$this->load->view('beranda/progress.php'); ?>
       </div>
 
       <div class="row">
-        <?php //$this->load->view('beranda/stat_bidang.php'); ?>
-      </div>
+        <?php $this->load->view('beranda/peta.php'); ?>
+        <?php $this->load->view('beranda/link_site.php'); ?>
 
+      </div>
 
       <div class='row'>
         <?php $this->load->view('beranda/warga_login.php'); ?>

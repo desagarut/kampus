@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
-<aside class="main-sidebar sidebar-light-maroon elevation-4">
+<aside class="main-sidebar sidebar-dark-aqua elevation-4">
   <!-- Brand Logo -->
   <a href="<?= site_url() ?>first" target="_blank" class="brand-link">
     <img src="<?= gambar_institusi($desa['logo']); ?>" alt="Logo <?= $this->setting->website_title ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -9,7 +9,6 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
         <img src="<?= AmbilFoto($foto); ?>" class="img-circle elevation-2" alt="User Image">
@@ -23,10 +22,8 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column text-sm" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
 
-        <?php foreach ($modul as $mod) : ?>
+      <?php foreach ($modul as $mod) : ?>
           <?php if ($this->CI->cek_hak_akses('b', $mod['url'])) : ?>
             <?php if (count($mod['submodul']) == 0) : ?>
 
@@ -58,7 +55,6 @@
                   <?php endforeach; ?>
                 </ul>
               </li>
-
 
             <?php endif; ?>
           <?php endif; ?>

@@ -24,8 +24,6 @@ class Beranda extends Admin_Controller {
 		$this->load->model('program_bantuan_model');
 		$this->load->model('config_model');
 		$this->load->model('dpt_model');
-
-		
 		
 		$this->modul_ini = 1;
 	}
@@ -75,7 +73,7 @@ class Beranda extends Admin_Controller {
 		
 		
 		
-		$this->set_minsidebar(0);
+		$this->set_minsidebar(1);
 		$this->render('beranda/instansi', $data);
 
 	}

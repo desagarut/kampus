@@ -103,12 +103,12 @@
 	<?php require __DIR__ . '/head_tags.php' ?>
 </head>
 
-<body class="hold-transition <?= $this->setting->warna_tema_admin; ?> sidebar-mini layout-fixed <?php if ($minsidebar == 1) : ?>sidebar-collapse<?php endif ?> layout-navbar-fixed">
+<body class="hold-transition  dark-mode <?= $this->setting->warna_tema_admin; ?> sidebar-mini layout-fixed <?php if ($minsidebar == 1) : ?>sidebar-collapse<?php endif ?> layout-navbar-fixed">
 	<div class="wrapper">
 		<div class="preloader flex-column justify-content-center align-items-center"> <img class="animation__shake" src="<?= base_url() ?>assets/files/logo/neosidega.fw.png" alt="<?= $this->setting->website_title ?>" height="80" width="80"> </div>
 
 		<!-- Navbar -->
-		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+		<nav class="main-header navbar navbar-expand navbar-dark navbar-dark">
 			<!-- Left navbar links -->
 			<ul class="navbar-nav">
 				<li class="nav-item"> <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a> </li>
