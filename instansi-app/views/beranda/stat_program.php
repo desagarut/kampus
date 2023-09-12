@@ -4,7 +4,7 @@
 
 <div class="row">
         <div class="col-md-2">
-            <a href="<?= site_url('keluarga/clear') ?>" class="small-card-footer" title="Lihat Daftar Keluarga">
+            <a href="<?= site_url('web/clear') ?>" class="small-card-footer" title="Lihat Daftar Keluarga">
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-primary elevation-3"><i class="fas fa-envelope-open"></i></span>
 

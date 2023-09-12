@@ -39,7 +39,7 @@ class Sid_Core extends Admin_Controller {
 		$data['keyword'] = $this->wilayah_model->autocomplete();
 		$data['total'] = $this->wilayah_model->total();
 
-		$this->render('sid/wilayah/wilayah', $data);
+		$this->render('sid/wilayah/wilayah_prov', $data);
 	}
 
 	/*
@@ -73,6 +73,30 @@ class Sid_Core extends Admin_Controller {
 		$this->load->view("sid/wilayah/wilayah_$aksi", $data);
 	}
 	
+	//Form Provinsi
+	public function form($id = '')
+	{
+		$data['penduduk'] = $this->wilayah_model->list_penduduk();
+
+		if ($id)
+		{
+			$temp = $this->wilayah_model->cluster_by_id($id);
+			$data['prov'] = $temp['prov'];
+			$data['individu'] = $this->wilayah_model->get_penduduk($temp['id_kepala']);
+			$data['form_action'] = site_url("sid_core/update_prov/$id");
+		}
+		else
+		{
+			$data['prov'] = null;
+			$data['form_action'] = site_url("sid_core/insert_prov");
+		}
+
+		$data['prov_id'] = $this->wilayah_model->get_prov_maps($id);
+
+		$this->render('sid/wilayah/wilayah_form_prov', $data);
+	}
+
+/*
 	//Form Desa
 	public function form($id = '')
 	{
@@ -95,29 +119,6 @@ class Sid_Core extends Admin_Controller {
 
 		$this->render('sid/wilayah/wilayah_form', $data);
 	}
-
-/*
-	public function form($id = '')
-	{
-		$data['penduduk'] = $this->wilayah_model->list_penduduk();
-
-		if ($id)
-		{
-			$temp = $this->wilayah_model->cluster_by_id($id);
-			$data['dusun'] = $temp['dusun'];
-			$data['individu'] = $this->wilayah_model->get_penduduk($temp['id_kepala']);
-			$data['form_action'] = site_url("sid_core/update/$id");
-		}
-		else
-		{
-			$data['dusun'] = null;
-			$data['form_action'] = site_url("sid_core/insert");
-		}
-
-		$data['dusun_id'] = $this->wilayah_model->get_dusun_maps($id);
-
-		$this->render('sid/wilayah/wilayah_form', $data);
-	}
 */
 	public function search()
 	{
@@ -127,6 +128,18 @@ class Sid_Core extends Admin_Controller {
 		else $this->session->unset_userdata('cari');
 		redirect('sid_core');
 	}
+
+	public function insert_prov($prov = '')
+	{
+		$this->wilayah_model->insert_prov();
+		redirect('sid_core');
+	}
+	public function update_prov($id = '')
+	{
+		$this->wilayah_model->update_prov($id);
+		redirect('sid_core');
+	}
+
 
 	public function insert($desa = '')
 	{
