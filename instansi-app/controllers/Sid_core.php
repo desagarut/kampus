@@ -39,7 +39,7 @@ class Sid_Core extends Admin_Controller {
 		$data['keyword'] = $this->wilayah_model->autocomplete();
 		$data['total'] = $this->wilayah_model->total();
 
-		$this->render('sid/wilayah/wilayah_prov', $data);
+		$this->render('sid/wilayah/wilayah_provinsi', $data);
 	}
 
 	/*
@@ -74,6 +74,29 @@ class Sid_Core extends Admin_Controller {
 	}
 	
 	//Form Provinsi
+	public function form_provinsi($id = '')
+	{
+		$data['penduduk'] = $this->wilayah_model->list_penduduk();
+
+		if ($id)
+		{
+			$temp = $this->wilayah_model->cluster_by_id($id);
+			$data['provinsi'] = $temp['provinsi'];
+			$data['individu'] = $this->wilayah_model->get_penduduk($temp['id_kepala']);
+			$data['form_action'] = site_url("sid_core/update_provinsi/$id");
+		}
+		else
+		{
+			$data['provinsi'] = null;
+			$data['form_action'] = site_url("sid_core/insert_provinsi");
+		}
+
+		$data['provinsi_id'] = $this->wilayah_model->get_provinsi_maps($id);
+
+		$this->render('sid/wilayah/wilayah_form_provinsi', $data);
+	}
+
+/*
 	public function form($id = '')
 	{
 		$data['penduduk'] = $this->wilayah_model->list_penduduk();
@@ -96,7 +119,7 @@ class Sid_Core extends Admin_Controller {
 		$this->render('sid/wilayah/wilayah_form_prov', $data);
 	}
 
-/*
+
 	//Form Desa
 	public function form($id = '')
 	{
@@ -129,14 +152,14 @@ class Sid_Core extends Admin_Controller {
 		redirect('sid_core');
 	}
 
-	public function insert_prov($prov = '')
+	public function insert_provinsi($provinsi = '')
 	{
-		$this->wilayah_model->insert_prov();
+		$this->wilayah_model->insert_provinsi();
 		redirect('sid_core');
 	}
-	public function update_prov($id = '')
+	public function update_provinsi($id = '')
 	{
-		$this->wilayah_model->update_prov($id);
+		$this->wilayah_model->update_provinsi($id);
 		redirect('sid_core');
 	}
 
@@ -173,6 +196,47 @@ class Sid_Core extends Admin_Controller {
 		$this->wilayah_model->delete($tipe, $id);
 		redirect($kembali);
 	}
+
+	// sub Provinsi
+	public function sub_kabkota($id_provinsi = '')
+	{
+		$provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		$nama_provinsi = $provinsi['provinsi'];
+		$data['kabkota'] = $kabkota['kabkota'];
+		$data['id_kabkota'] = $id_kabkota;
+		$data['main'] = $this->wilayah_model->list_data_kabkota($id_provinsi);
+		$data['total'] = $this->wilayah_model->total_kabkota($nama_provinsi);
+
+		$this->render('sid/wilayah/wilayah_kabkota', $data);
+	}
+
+	// Formulir untuk twe_wilayah
+	public function form_kabkota($id_provinsi = '', $id_kabkota = '')
+	{
+		$temp = $this->wilayah_model->cluster_by_id($id_provinsi);
+		$provinsi = $temp['provinsi'];
+		$data['provinsi'] = $temp['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+
+		$data['penduduk'] = $this->wilayah_model->list_penduduk();
+
+		if ($id_kabkota)
+		{
+			$temp = $this->wilayah_model->cluster_by_id($id_kabkota);
+			$data['id_provinsi'] = $id_provinsi;
+			$data['kabkota'] = $temp['kabkota'];
+			$data['individu'] = $this->wilayah_model->get_penduduk($temp['id_kepala']);
+			$data['form_action'] = site_url("sid_core/update_kabkota/$id_provinsi/$id_kabkota");
+		}
+		else
+		{
+			$data['kabkota'] = NULL;
+			$data['form_action'] = site_url("sid_core/insert_kabkota/$id_provinsi");
+		}
+
+		$this->render('sid/wilayah/wilayah_form_kabkota', $data);
+	}
+
 	
 //awal sub_dusun
 	public function sub_dusun($id_desa = '')

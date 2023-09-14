@@ -10,7 +10,7 @@ class Wilayah_model extends MY_Model
 
 	public function autocomplete()
 	{
-		return $this->autocomplete_str('prov', 'tweb_wilayah');
+		return $this->autocomplete_str('provinsi', 'tweb_wilayah');
 	}
 
 	private function search_sql()
@@ -19,7 +19,7 @@ class Wilayah_model extends MY_Model
 			$cari = $this->db->escape_like_str($_SESSION['cari']);
 			$kw = $this->db->escape_like_str($cari);
 			$kw = '%' . $kw . '%';
-			$search_sql = " AND u.prov LIKE '$kw'";
+			$search_sql = " AND u.provinsi LIKE '$kw'";
 			return $search_sql;
 		}
 	}
@@ -63,7 +63,7 @@ class Wilayah_model extends MY_Model
 		$paging_sql = ' LIMIT ' . $offset . ',' . $limit;
 
 		$select_sql = "SELECT u.*, a.nama AS nama_kadus, a.nik AS nik_kadus,
-		(SELECT COUNT(prov.id) FROM tweb_wilayah prov WHERE prov = u.prov AND kabkota<> '-'  AND kecamatan<> '-' AND desa<> '-'  AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_prov,
+		(SELECT COUNT(provinsi.id) FROM tweb_wilayah provinsi WHERE provinsi = u.provinsi AND kabkota<> '-'  AND kecamatan<> '-' AND desa<> '-'  AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_provinsi,
 		(SELECT COUNT(kabkota.id) FROM tweb_wilayah kabkota WHERE desa = u.desa AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_kabkota,
 		(SELECT COUNT(kecamatan.id) FROM tweb_wilayah kecamatan WHERE desa = u.desa AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_kecamatan,
 		(SELECT COUNT(desa.id) FROM tweb_wilayah desa WHERE desa = u.desa AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_desa,
@@ -92,7 +92,7 @@ class Wilayah_model extends MY_Model
 
 	public function list_semua_wilayah()
 	{
-		$this->case_prov = "w.kabkota = '0' and w.kecamatan = '0' and w.desa = '0' and w.dusun = '0' and w.rw = '0' and w.rt = '0'";
+		$this->case_provinsi = "w.kabkota = '0' and w.kecamatan = '0' and w.desa = '0' and w.dusun = '0' and w.rw = '0' and w.rt = '0'";
 		$this->case_kabkota = "w.kabkota <> '0' and w.kabkota <> '-' and w.kecamatan = '0' and w.desa = '0' and w.dusun = '0' and w.rw = '0' and w.rt = '0'";
 
 		$this->case_dusun = "w.rw = '0' and w.rt = '0'";
@@ -176,7 +176,7 @@ class Wilayah_model extends MY_Model
 	{
 		if (empty((int)$data['id_kepala']))
 			unset($data['id_kepala']);
-		$data['prov'] = nama_terbatas($data['prov']) ?: 0;
+		$data['provinsi'] = nama_terbatas($data['provinsi']) ?: 0;
 		$data['kabkota'] = nama_terbatas($data['kabkota']) ?: 0;
 		$data['kecamatan'] = nama_terbatas($data['kecamatan']) ?: 0;
 		$data['desa'] = nama_terbatas($data['desa']) ?: 0;
@@ -195,10 +195,10 @@ class Wilayah_model extends MY_Model
 
 
 // Insert Update Provinsi Berhasil
-	public function insert_prov()
+	public function insert_provinsi()
 	{
 		$data = $this->bersihkan_data($this->input->post());
-		$wil = array('prov' => $data['prov']);
+		$wil = array('provinsi' => $data['provinsi']);
 		$cek_data = $this->cek_data('tweb_wilayah', $wil);
 		if ($cek_data) {
 			$_SESSION['success'] = -2;
@@ -235,17 +235,17 @@ class Wilayah_model extends MY_Model
 	}
 // Insert Update Provinsi Berhasil
 
-	public function update_prov($id = 0)
+	public function update_provinsi($id = 0)
 	{
 		$data = $this->bersihkan_data($this->input->post());
-		$wil = array('prov' => $data['prov'], 'kabkota' => '0', 'kecamatan' => '0', 'desa' => '0', 'dusun' => '0', 'rw' => '0', 'rt' => '0', 'id <>' => $id);
+		$wil = array('provinsi' => $data['provinsi'], 'kabkota' => '0', 'kecamatan' => '0', 'desa' => '0', 'dusun' => '0', 'rw' => '0', 'rt' => '0', 'id <>' => $id);
 		$cek_data = $this->cek_data('tweb_wilayah', $wil);
 		if ($cek_data) {
 			$_SESSION['success'] = -2;
 			return;
 		}
 		$temp = $this->wilayah_model->cluster_by_id($id);
-		$this->db->where('prov', $temp['prov']);
+		$this->db->where('provinsi', $temp['provinsi']);
 		$this->db->where('kabkota', '0');
 		$this->db->where('kecamatan', '0');
 
@@ -256,7 +256,7 @@ class Wilayah_model extends MY_Model
 		$outp1 = $this->db->update('tweb_wilayah', $data);
 
 		// Ubah nama Desa di semua baris dusun/rw/rt untuk desa ini
-		$outp2 = $this->db->where('prov', $temp['prov'])->update('tweb_wilayah', array('prov' => $data['prov']));
+		$outp2 = $this->db->where('provinsi', $temp['provinsi'])->update('tweb_wilayah', array('provinsi' => $data['provinsi']));
 
 		if ($outp1 and $outp2) $_SESSION['success'] = 1;
 		else $_SESSION['success'] = -1;
@@ -345,6 +345,32 @@ class Wilayah_model extends MY_Model
 
 		status_sukses($outp, $gagal_saja = true); //Tampilkan Pesan
 	}
+
+		//Bagian Kabupaten / Kota
+		public function list_data_kabkota($id = '')
+		{
+			$temp = $this->cluster_by_id($id);
+			$provinsi = $temp['provinsi'];
+	
+			$sql = "SELECT u.*, a.nama AS nama_ketua, a.nik AS nik_ketua,
+			(SELECT COUNT(rt.id) FROM tweb_wilayah rt WHERE dusun = u.dusun AND rw = u.rw AND rt <> '-' AND rt <> '0' ) AS jumlah_rt,
+			(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw)) AS jumlah_warga,
+			(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.sex = 1) AS jumlah_warga_l,
+			(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.sex = 2) AS jumlah_warga_p,
+			(SELECT COUNT(p.id) FROM keluarga_aktif k inner join penduduk_hidup p ON k.nik_kepala=p.id  WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.kk_level = 1) AS jumlah_kk
+			FROM tweb_wilayah u
+			LEFT JOIN penduduk_hidup a ON u.id_kepala = a.id
+			WHERE u.rt = '0' AND u.rw <> '0' AND u.dusun = '$dusun'";
+			$query = $this->db->query($sql);
+			$data = $query->result_array();
+	
+			//Formating Output
+			for ($i = 0; $i < count($data); $i++) {
+				$data[$i]['no'] = $i + 1;
+			}
+			return $data;
+		}
+	
 
 	//Bagian Dusun
 	public function list_data_dusun($id = '')
@@ -570,7 +596,7 @@ class Wilayah_model extends MY_Model
 		return $data;
 	}
 
-	public function list_prov()
+	public function list_provinsi()
 	{
 		$data = $this->db
 			->where('kabkota', '0')
@@ -645,6 +671,25 @@ class Wilayah_model extends MY_Model
 		return $query->row_array();
 	}
 
+	public function total_kabkota($provinsi = '')
+	{
+		$sql = "SELECT sum(jumlah_rt) AS jmlrt, sum(jumlah_warga) AS jmlwarga, sum(jumlah_warga_l) AS jmlwargal, sum(jumlah_warga_p) AS jmlwargap, sum(jumlah_kk) AS jmlkk
+			FROM
+			(SELECT u.*, a.nama AS nama_ketua, a.nik AS nik_ketua,
+				(SELECT COUNT(rt.id) FROM tweb_wilayah rt WHERE dusun = u.dusun AND rw = u.rw AND rt <> '-' AND rt <> '0' ) AS jumlah_rt,
+				(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw )) AS jumlah_warga,
+				(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.sex = 1) AS jumlah_warga_l,
+				(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.sex = 2) AS jumlah_warga_p,
+				(SELECT COUNT(p.id) FROM  keluarga_aktif k inner join penduduk_hidup p ON k.nik_kepala=p.id   WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.kk_level = 1) AS jumlah_kk
+				FROM tweb_wilayah u
+				LEFT JOIN penduduk_hidup a ON u.id_kepala = a.id
+				WHERE u.rt = '0' AND u.rw <> '0' AND u.dusun = '$dusun') AS x ";
+		$query = $this->db->query($sql);
+		$data = $query->row_array();
+		return $data;
+	}
+
+
 	public function total_rw($dusun = '')
 	{
 		$sql = "SELECT sum(jumlah_rt) AS jmlrt, sum(jumlah_warga) AS jmlwarga, sum(jumlah_warga_l) AS jmlwargal, sum(jumlah_warga_p) AS jmlwargap, sum(jumlah_kk) AS jmlkk
@@ -710,7 +755,7 @@ class Wilayah_model extends MY_Model
 		status_sukses($outp); //Tampilkan Pesan
 	}
 
-	public function get_prov_maps($id = 0)
+	public function get_provinsi_maps($id = 0)
 	{
 		$sql = "SELECT * FROM tweb_wilayah WHERE id = ?";
 		$query = $this->db->query($sql, $id);

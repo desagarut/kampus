@@ -18,7 +18,7 @@
 				<input type="file" class="hidden" id="file" name="foto">
 				<input type="hidden" name="old_foto" value="<?= $penduduk['foto']?>">
 				<span class="input-group-btn">
-					<button type="button" class="btn btn-info btn-box"  id="file_browser"><i class="fa fa-search"></i> Browse</button>
+					<button type="button" class="btn btn-info btn-box btn-sm"  id="file_browser"><i class="fa fa-search"></i> Browse</button>
 				</span>
 			</div>
 		</div>

@@ -14,13 +14,13 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h4 class="m-0">Wilayah Administratif</h4>
+					<h4 class="m-0">Wilayah Provinsi</h4>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="<?= site_url() ?>beranda">Beranda</a></li>
 						<li class="breadcrumb-item active"><a href="<?= site_url('identitas_instansi') ?>">Identitas Instansi</a></li>
-						<li class="breadcrumb-item active"><a href="#!">wilayah Administratif</a></li>
+						<li class="breadcrumb-item active"><a href="#!">wilayah Provinsi</a></li>
 					</ol>
 				</div>
 			</div>
@@ -96,14 +96,14 @@
 															<td nowrap>
 																<a href="<?= site_url("sid_core/sub_kabkota/$data[id]") ?>" class="btn bg-purple btn-box btn-sm" title="Rincian Sub Wilayah"><i class="fa fa-search"></i> Kab/Kota</a>
 																<?php if ($this->CI->cek_hak_akses('h')) : ?>
-																	<a href="<?= site_url("sid_core/form/$data[id]") ?>" class="btn bg-orange btn-box btn-sm" title="Ubah"><i class="fa fa-edit"></i></a>
+																	<a href="<?= site_url("sid_core/form_provinsi/$data[id]") ?>" class="btn bg-orange btn-box btn-sm" title="Ubah"><i class="fa fa-edit"></i></a>
 																	<a href="#" data-href="<?= site_url("sid_core/delete/dusun/$data[id]") ?>" class="btn bg-maroon btn-box btn-sm" title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash"></i></a>
 																	<a href="<?= site_url("sid_core/ajax_kantor_dusun_maps_google/$data[id]") ?>" class="btn btn-info btn-box btn-sm" title="Lokasi Kantor"><i class="fa fa-map-marker"></i></a>
 																	<a href="<?= site_url("sid_core/ajax_wilayah_dusun_maps_google/$data[id]") ?>" class="btn btn-primary btn-box btn-sm" title="Peta Google"><i class="fa fa-map"></i></a>
 																	<a href="<?= site_url("sid_core/ajax_wilayah_dusun_openstreet_maps/$data[id]") ?>" class="btn btn-info btn-box btn-sm" title="Peta Openstreet"><i class="fa fa-map-o"></i></a>
 																<?php endif; ?>
 															</td>
-															<td><?= strtoupper($data['prov']) ?></td>
+															<td><?= strtoupper($data['provinsi']) ?></td>
 															<td nowrap><strong><?= strtoupper($data['nama_kadus']) ?></strong> - <?= $data['nik_kadus'] ?></td>
 															<td class="bilangan"><a href="<?= site_url("sid_core/sub_kabkota/$data[id]") ?>" title="Rincian Sub Wilayah"><?= $data['jumlah_kabkota'] ?></a></td>
 															<td class="bilangan"><a href="<?= site_url("sid_core/sub_kec/$data[id]") ?>" title="Rincian Sub Wilayah"><?= $data['jumlah_kecamatan'] ?></a></td>
