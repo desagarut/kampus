@@ -208,7 +208,22 @@ class Sid_Core extends Admin_Controller {
 		$data['total'] = $this->wilayah_model->total_kabkota($nama_provinsi);
 
 		$this->render('sid/wilayah/wilayah_kabkota', $data);
+
+		$this->render('sid/wilayah/wilayah_kabkota', $data);
 	}
+
+	public function cetak_kabkota($id_desa = '')
+	{
+		$provinsi = $this->wilayah_model->cluster_by_id($id_desa);
+		$nama_provinsi = $provinsi['provinsi'];
+		$data['provinsi'] = $provinsi['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+		$data['main'] = $this->wilayah_model->list_data_kabkota($id_desa);
+		$data['total'] = $this->wilayah_model->total_kabkota($nama_desa);
+
+		$this->load->view('sid/wilayah/wilayah_kabkota_print', $data);
+	}
+
 
 	// Formulir untuk twe_wilayah
 	public function form_kabkota($id_provinsi = '', $id_kabkota = '')

@@ -64,12 +64,12 @@ class Wilayah_model extends MY_Model
 
 		$select_sql = "SELECT u.*, a.nama AS nama_kadus, a.nik AS nik_kadus,
 		(SELECT COUNT(provinsi.id) FROM tweb_wilayah provinsi WHERE provinsi = u.provinsi AND kabkota = '0' AND kecamatan = '0' AND desa = '0'  AND dusun = '0' AND rw = '0' AND rt = '0') AS jumlah_provinsi,
-		(SELECT COUNT(kabkota.id) FROM tweb_wilayah kabkota WHERE desa = u.desa AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_kabkota,
-		(SELECT COUNT(kecamatan.id) FROM tweb_wilayah kecamatan WHERE desa = u.desa AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_kecamatan,
-		(SELECT COUNT(desa.id) FROM tweb_wilayah desa WHERE desa = u.desa AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_desa,
-		
-		(SELECT COUNT(dusun.id) FROM tweb_wilayah dusun WHERE desa = u.desa AND dusun<> '-' AND rw = '-' AND rt = '-') AS jumlah_dusun,
-		(SELECT COUNT(rw.id) FROM tweb_wilayah rw WHERE dusun = u.dusun AND rw <> '-' AND rt = '-') AS jumlah_rw,
+		(SELECT COUNT(kabkota.id) FROM tweb_wilayah kabkota WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = '0' AND desa = '0' AND dusun = 0 AND rw = '0' AND rt = '0') AS jumlah_kabkota,
+		(SELECT COUNT(kecamatan.id) FROM tweb_wilayah kecamatan WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan <> '-' AND desa = '0' AND dusun = '0' AND rw = '0' AND rt = '0') AS jumlah_kecamatan,
+			(SELECT COUNT(desa.id) FROM tweb_wilayah desa WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa <> '-' AND dusun = '0' AND rw = '0' AND rt = '0') AS jumlah_desa,
+			(SELECT COUNT(dusun.id) FROM tweb_wilayah dusun WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa = u.desa AND dusun <> '-' AND rw = '0' AND rt = '0') AS jumlah_dusun,
+			(SELECT COUNT(rw.id) FROM tweb_wilayah rw WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa = u.desa AND dusun = u.dusun AND rw <> '-' AND rt = '0') AS jumlah_rw,
+			(SELECT COUNT(rt.id) FROM tweb_wilayah rt WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa = u.desa AND dusun = u.dusun AND rw = u.rw AND rt <> '-') AS jumlah_rt,
 		(SELECT COUNT(v.id) FROM tweb_wilayah v WHERE dusun = u.dusun AND v.rt <> '0' AND v.rt <> '-') AS jumlah_rt,
 		(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = u.dusun)) AS jumlah_warga,
 		(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = u.dusun) AND p.sex = 1) AS jumlah_warga_l,
@@ -353,14 +353,18 @@ class Wilayah_model extends MY_Model
 		$provinsi = $temp['provinsi'];
 
 		$sql = "SELECT u.*, a.nama AS nama_ketua, a.nik AS nik_ketua,
-			(SELECT COUNT(rt.id) FROM tweb_wilayah rt WHERE dusun = u.dusun AND rw = u.rw AND rt <> '-' AND rt <> '0' ) AS jumlah_rt,
+			(SELECT COUNT(kecamatan.id) FROM tweb_wilayah kecamatan WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan <> '0' AND kecamatan <> '-' AND desa = '0' AND dusun = '0' AND rw = '0' AND rt = '0') AS jumlah_kecamatan,
+			(SELECT COUNT(desa.id) FROM tweb_wilayah desa WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa <> '-' AND dusun = '0' AND rw = '0' AND rt = '0') AS jumlah_desa,
+			(SELECT COUNT(dusun.id) FROM tweb_wilayah dusun WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa = u.desa AND dusun <> '-' AND rw = '0' AND rt = '0') AS jumlah_dusun,
+			(SELECT COUNT(rw.id) FROM tweb_wilayah rw WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa = u.desa AND dusun = u.dusun AND rw <> '-' AND rt = '0') AS jumlah_rw,
+			(SELECT COUNT(rt.id) FROM tweb_wilayah rt WHERE provinsi = u.provinsi AND kabkota = u.kabkota AND kecamatan = u.kecamatan AND desa = u.desa AND dusun = u.dusun AND rw = u.rw AND rt <> '-') AS jumlah_rt,
 			(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw)) AS jumlah_warga,
 			(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.sex = 1) AS jumlah_warga_l,
 			(SELECT COUNT(p.id) FROM penduduk_hidup p WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.sex = 2) AS jumlah_warga_p,
 			(SELECT COUNT(p.id) FROM keluarga_aktif k inner join penduduk_hidup p ON k.nik_kepala=p.id  WHERE p.id_cluster IN(SELECT id FROM tweb_wilayah WHERE dusun = '$dusun' AND rw = u.rw) AND p.kk_level = 1) AS jumlah_kk
 			FROM tweb_wilayah u
 			LEFT JOIN penduduk_hidup a ON u.id_kepala = a.id
-			WHERE u.rt = '0' AND u.rw <> '0' AND u.dusun = '$dusun'";
+			WHERE u.rt = '0' AND u.rw = '0' AND u.dusun = '0' AND u.desa = '0' AND u.kecamatan = '0' AND u.kabkota <> '-' And u.kabkota <> '0' AND u.provinsi = '$provinsi'";
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 
@@ -428,7 +432,7 @@ class Wilayah_model extends MY_Model
 		$data['provinsi'] = $temp['provinsi'];
 		$wil = array('provinsi' => $data['provinsi'], 'kabkota' => '0', 'kecamatan' => '0', 'desa' => '0', 'dusun' => '0', 'rw' => '0', 'rt' => '0', 'id <>' => $id);
 
-	//	$wil = array('dusun' => $data['dusun'], 'rw' => $data['rw']);
+		//	$wil = array('dusun' => $data['dusun'], 'rw' => $data['rw']);
 		$cek_data = $this->cek_data('tweb_wilayah', $wil);
 		if ($cek_data) {
 			$_SESSION['success'] = -2;

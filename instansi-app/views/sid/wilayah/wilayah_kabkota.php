@@ -23,7 +23,7 @@
 				<div class="card">
 					<div class="card-header">
 						<a href="<?= site_url("sid_core") ?>" class="btn btn-box btn-info btn-sm btn-sm" title="Kembali Ke Daftar Kabupaten Kota">
-							<i class="fa fa-arrow-circle-left "></i>&nbsp;Kembali ke Daftar Kab/Kota
+							<i class="fa fa-arrow-circle-left "></i>&nbsp;Kembali ke Provinsi
 						</a>
 						<?php if ($this->CI->cek_hak_akses('h')) : ?>
 							<a href="<?= site_url("sid_core/form_kabkota/$id_provinsi") ?>" class="btn btn-box btn-success btn-sm" title="Tambah Data"><i class="fa fa-plus"></i></a>
@@ -32,7 +32,7 @@
 						<a href="<?= site_url("sid_core/excel_kabkota/$id_provinsi") ?>" class="btn btn-box bg-navy btn-sm" title="Unduh Data" target="_blank"><i class="fa fa-download"></i></a>
 					</div>
 					<div class="card-header">
-						<strong>Provinsi <?= $provinsi ?></strong>
+						<strong>Provinsi <?= $provinsi['provinsi']; ?></strong>
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
@@ -45,7 +45,7 @@
 													<tr>
 														<th class="padat">No</th>
 														<th wlass="padat">Aksi</th>
-														<th width="35%">Kab/Kota</th>
+														<th width="35%">Kabupaten/Kota</th>
 														<th width="35%">Ketua</th>
 														<th class="text-center">Kec</th>
 														<th class="text-center">Desa/Kel.</th>
@@ -75,7 +75,7 @@
 														<tr>
 															<td class="no_urut"><?= $data['no'] ?></td>
 															<td nowrap>
-																<a href="<?= site_url("sid_core/sub_kabkota/$data[id]") ?>" class="btn bg-purple btn-box btn-sm" title="Rincian Sub Wilayah"><i class="fa fa-search"></i> Kab/Kota</a>
+																<a href="<?= site_url("sid_core/sub_kabkota/$data[id]") ?>" class="btn bg-purple btn-box btn-sm" title="Rincian Sub Wilayah"><i class="fa fa-search"></i> Kecamatan</a>
 																<?php if ($this->CI->cek_hak_akses('h')) : ?>
 																	<a href="<?= site_url("sid_core/form_provinsi/$data[id]") ?>" class="btn bg-orange btn-box btn-sm" title="Ubah"><i class="fa fa-edit"></i></a>
 																	<a href="#" data-href="<?= site_url("sid_core/delete/dusun/$data[id]") ?>" class="btn bg-maroon btn-box btn-sm" title="Hapus" data-toggle="modal" data-target="#confirm-delete"><i class="fa fa-trash"></i></a>
@@ -124,9 +124,10 @@
 													</tr>
 												</tfoot>
 											</table>
-											<?php //$this->load->view('global/paging');?>
+											<?php $this->load->view('global/paging');
+											?>
 										</div>
-											<?php $this->load->view('global/paging'); ?>
+										<?php //$this->load->view('global/paging'); ?>
 									</div>
 								</div>
 							</form>
