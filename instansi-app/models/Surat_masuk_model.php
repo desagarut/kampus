@@ -370,11 +370,12 @@ class Surat_masuk_model extends MY_Model {
 	  'Staf Bidang Kepegawaian',
 	  'Staf Bidang Keuangan',
 	  'Staf Bidang Kemahasiswaan');
+	  /*
     $list_dusun = $this->wilayah_model->list_data();
     foreach ($list_dusun as $dusun)
     {
     	array_push($ref_disposisi, ucwords($this->setting->sebutan_singkatan_kadus).' '.ucwords(strtolower($dusun['dusun'])));
-    };
+    };*/
     return $ref_disposisi;
 	}
 
