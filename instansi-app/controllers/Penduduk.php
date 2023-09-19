@@ -71,6 +71,9 @@ class Penduduk extends Admin_Controller {
 		$data['set_page'] = $this->_set_page;
 		$data['paging'] = $this->penduduk_model->paging($p, $o);
 		$data['main'] = $this->penduduk_model->list_data($o, $data['paging']->offset, $data['paging']->per_page);
+		$data['list_provinsi'] = $this->wilayah_model->list_provinsi();
+		$data['list_kabkota'] = $this->wilayah_model->list_kabkota();
+
 		$data['list_dusun'] = $this->wilayah_model->list_dusun();
 		$data['list_status_dasar'] = $this->referensi_model->list_data('tweb_status_dasar');
 		$data['list_status_penduduk'] = $this->referensi_model->list_data('tweb_penduduk_status');
@@ -137,6 +140,10 @@ class Penduduk extends Admin_Controller {
 				$data['form_action'] = site_url("penduduk/insert");
 		}
 
+		$data['provinsi'] = $this->wilayah_model->list_provinsi();
+		$data['kabkota'] = $this->wilayah_model->list_kabkota();
+		$data['kecamatan'] = $this->wilayah_model->list_kecamatan();
+		$data['desa'] = $this->wilayah_model->list_desa();
 		$data['dusun'] = $this->wilayah_model->list_dusun();
 		$data['rw'] = $this->wilayah_model->list_rw($data['penduduk']['dusun']);
 		$data['rt'] = $this->wilayah_model->list_rt($data['penduduk']['dusun'], $data['penduduk']['rw']);

@@ -57,7 +57,7 @@
 									<strong>DATA KEPALA KELUARGA :</strong>
 								</div>
 							</div>
-							<?php include("donjo-app/views/sid/kependudukan/penduduk_form_isian.php"); ?>
+							<?php include("instansi-app/views/sid/kependudukan/penduduk_form_isian.php"); ?>
 						</div>
 					</div>
 				</div>

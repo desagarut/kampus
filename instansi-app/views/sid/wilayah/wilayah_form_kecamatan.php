@@ -4,7 +4,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h4 class="m-0">Wilayah Kabupaten/Kota <?= $data['provinsi'] ?></h4>
+					<h4 class="m-0">Wilayah Kecamatan <?= $kecamatan['kecamatan'] ?></h4>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
@@ -22,8 +22,8 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<a href="<?= site_url("sid_core/sub_kabkota/$id_provinsi") ?>" class="btn btn-box btn-info btn-sm" title="Kembali Ke Daftar Wilayah">
-							<i class="fa fa-arrow-circle-left "></i>&nbsp;Kembali ke Kab/Kota
+						<a href="<?= site_url("sid_core/sub_kecamatan/$id_provinsi/$id_kabkota/") ?>" class="btn btn-box btn-info btn-sm" title="Kembali Ke Daftar Wilayah">
+							<i class="fa fa-arrow-circle-left "></i>&nbsp;Kembali ke Kecamatan
 						</a>
 					</div>
 					<div class="card-body">
@@ -34,9 +34,9 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<div class="form-group">
-													<label class="col-sm-3 control-label" for="kabkota">Nama <?= ucwords($this->setting->sebutan_kabkota) ?></label>
+													<label class="col-sm-3 control-label" for="kecamatan">Nama <?= ucwords($this->setting->sebutan_kecamatan) ?></label>
 													<div class="col-sm-7">
-														<input id="kabkota" class="form-control input-sm nama_terbatas required" maxlength="100" type="text" placeholder="Nama  <?= ucwords($this->setting->sebutan_kabkota) ?>" name="kabkota" value="<?= $kabkota ?>">
+														<input id="kecamatan" class="form-control input-sm nama_terbatas required" maxlength="100" type="text" placeholder="Nama <?= ucwords($this->setting->sebutan_kecamatan) ?>" name="kecamatan" value="<?= $kecamatan ?>">
 													</div>
 												</div>
 											</div>

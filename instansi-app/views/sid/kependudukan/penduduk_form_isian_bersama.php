@@ -77,6 +77,20 @@
 				break;
 		}
 	}
+	function ubah_provinsi(provinsi)
+	{
+		$('#isi_kabkota').hide();
+		var kabkota = $('#kabkota');
+		select_options(kabkota, urlencode(provinsi));
+	}
+
+	function ubah_kabkota(provinsi, kabkota)
+	{
+		$('#isi_kabkota').show();
+		var kecamatan = $('#kecamatan');
+		select_options(kabkota, urlencode(provinsi));
+	}
+
 	function ubah_dusun(dusun)
 	{
 		$('#isi_rt').hide();
@@ -422,38 +436,56 @@
 				<?php endif; ?>
 				<?php if (empty($id_kk)): ?>
 					<div class="row">
-						<div class="col-sm-12">
-							<div class='form-group col-sm-3'>
+							<div class='form-group col-sm-4'>
+								<label>Provinsi</label>
+								<select name="provinsi" class="form-control form-control-sm select2" onchange="ubah_provinsi($(this).val())" style="width: 100%">
+									<option value="">Pilih Provinsi</option>
+									<?php foreach ($provinsi as $data): ?>
+										<option value="<?= $data['provinsi']?>" <?php selected($penduduk['provinsi'], $data['provinsi']) ?>><?= $data['provinsi']?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+							<div class='form-group col-sm-4'>
+								<label>Kabupaten Kota</label>
+								<select name="kabkota" class="form-control form-control-sm select2" onchange="ubah_provinsi($(this).val())" style="width: 100%">
+									<option value="">Pilih Kabupaten Kota</option>
+									<?php foreach ($kabkota as $data): ?>
+										<option value="<?= $data['kabkota']?>" <?php selected($penduduk['kabkota'], $data['kabkota']) ?>><?= $data['kabkota']?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+
+							<div class='form-group col-sm-4'>
 								<label><?= ucwords($this->setting->sebutan_dusun)?> <?php (empty($penduduk['no_kk']) and empty($kk_baru)) or print('KK')?></label>
-								<select name="dusun" class="form-control form-control-sm  input-sm required" onchange="ubah_dusun($(this).val())">
+								<select name="dusun" class="form-control form-control-sm select2" onchange="ubah_dusun($(this).val())" style="width: 100%">
 									<option value="">Pilih <?= ucwords($this->setting->sebutan_dusun)?></option>
 									<?php foreach ($dusun as $data): ?>
 										<option value="<?= $data['dusun']?>" <?php selected($penduduk['dusun'], $data['dusun']) ?>><?= $data['dusun']?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>
-							<div class='form-group col-sm-2'>
+
+							<div class='form-group col-sm-4'>
 								<label>RW <?php (empty($penduduk['no_kk']) and empty($kk_baru)) or print('KK')?></label>
-								<select id="rw" class="form-control form-control-sm  input-sm required" name="rw" data-source="<?= site_url()?>wilayah/list_rw/" data-valueKey="rw" data-displayKey="rw" onchange="ubah_rw($('select[name=dusun]').val(), $(this).val())">
+								<select id="rw" class="form-control form-control-sm  input-sm" name="rw" data-source="<?= site_url()?>wilayah/list_rw/" data-valueKey="rw" data-displayKey="rw" onchange="ubah_rw($('select[name=dusun]').val(), $(this).val())">
 									<option class="placeholder" value="">Pilih RW</option>
 									<?php foreach ($rw as $data): ?>
 										<option value="<?= $data['rw']?>" <?php selected($penduduk['rw'], $data['rw']) ?>><?= $data['rw']?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>
-							<div id='isi_rt' class='form-group col-sm-2'>
+							<div id='isi_rt' class='form-group col-sm-4'>
 								<label>RT <?php (empty($penduduk['no_kk']) and empty($kk_baru)) or print('KK')?></label>
-								<select id="id_cluster" class="form-control form-control-sm  input-sm required" name="id_cluster" data-source="<?= site_url()?>wilayah/list_rt/" data-valueKey="id" data-displayKey="rt">
+								<select id="id_cluster" class="form-control form-control-sm  input-sm" name="id_cluster" data-source="<?= site_url()?>wilayah/list_rt/" data-valueKey="id" data-displayKey="rt">
 									<option class="placeholder" value="">Pilih RT </option>
 									<?php foreach ($rt as $data): ?>
 										<option value="<?= $data['id']?>" <?php selected($penduduk['id_cluster'], $data['id']) ?>><?= $data['rt']?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>
-						</div>
 					</div>
-				<?php endif; ?>
-				<div class='col-sm-4'>
+				<?php endif; ?><br/>
+				<div class='col-sm-12'>
 					<div class='form-group'>
 						<label for="lokasi">Lokasi Tempat Tinggal </label>
 						<div class="row">

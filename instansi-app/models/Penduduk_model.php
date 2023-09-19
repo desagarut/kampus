@@ -1048,6 +1048,16 @@ class Penduduk_model extends MY_Model {
 	}
 
 	// TODO: Ubah yg masih menggunakan, spy menggunakan penanganan wilayah di wilayah_model.php
+	public function list_provinsi()
+	{
+		$sql = "SELECT * FROM tweb_wilayah WHERE kabkota = '0' AND kecamatan = '0' AND desa = '0'  AND dusun = '0' AND rw = '0' AND rt = '0'";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
+
+	// TODO: Ubah yg masih menggunakan, spy menggunakan penanganan wilayah di wilayah_model.php
 	public function list_dusun()
 	{
 		$sql = "SELECT * FROM tweb_wilayah WHERE rt = '0' AND rw = '0' ";
