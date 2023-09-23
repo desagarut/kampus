@@ -54,13 +54,13 @@
             </a>
         </div>
         <div class="col-md-2">
-            <a href="<?= site_url('surat') ?>" class="small-card-footer" title="Administrasi Surat">
+            <a href="<?= site_url('surat') ?>" class="small-card-footer" title="Buat Surat">
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-warning elevation-3"><i class="fas fa-envelope"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Surat Mahasiswa</span>
-                        <?php foreach ($surat_keluar as $data) : ?>
+                        <span class="info-box-text">Buat Surat</span>
+                        <?php foreach ($log_surat as $data) : ?>
                             <span class="info-box-number"><?= $data['jumlah'] ?>
                                 <small>buah</small>
                             </span>

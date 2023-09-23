@@ -94,6 +94,14 @@ class Header_model extends CI_Model {
 		return $data;
 	}
 
+	public function jumlah_surat_keluar_layanan()
+	{
+		$sql = "SELECT COUNT(id) AS jumlah FROM log_surat";
+		$query = $this->db->query($sql);
+		$data = $query->result_array();
+		return $data;
+	}
+
 	public function pegawai_total()
 	{
 		$sql = "SELECT COUNT(pamong_id) AS jumlah FROM tweb_pamong WHERE pamong_status = 1 ";

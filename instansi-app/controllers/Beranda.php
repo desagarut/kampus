@@ -40,6 +40,8 @@ class Beranda extends Admin_Controller {
 		$data['dusun'] = $this->header_model->dusun_total();
 		$data['surat_masuk'] = $this->header_model->jumlah_surat_masuk();
 		$data['surat_keluar'] = $this->header_model->jumlah_surat_keluar();
+		$data['log_surat'] = $this->header_model->jumlah_surat_keluar_layanan();
+
 		$data['pegawai'] = $this->header_model->pegawai_total();
 		$data['artikel'] = $this->header_model->artikel_total();
 
