@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOKTzsvtw8j-TJI8dmJ228bXASq4C-S7U&callback=initMap&v=weekly" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/somanchiu/Keyless-Google-Maps-API@v5.7/mapsJavaScriptAPI.js" async defer></script>
 
 <script>
     var map
@@ -59,22 +59,6 @@
     }
 </script>
 
-<!-- widget Peta Wilayah Desa -->
-<!--
-<div class="col-md-8">
-    <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">Peta Wilayah Kerja</h3>
-            <div class="card-tools"> <span class="badge badge-danger">Peta</span>
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"> <i class="fas fa-times"></i> </button>
-            </div>
-        </div>
-        <div class="card-body">
-            <div id="peta-desa" class="set-map" style="height: 280px"></div>
-        </div>
-    </div>
-</div>-->
 <div class="col-md-8">
     <div class="card">
         <div class="card-header">

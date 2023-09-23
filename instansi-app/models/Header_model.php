@@ -80,7 +80,7 @@ class Header_model extends CI_Model {
 
 	public function jumlah_surat_masuk()
 	{
-		$sql = "SELECT COUNT(id) AS jumlah FROM surat_masuk WHERE kode_surat > 1 ";
+		$sql = "SELECT COUNT(id) AS jumlah FROM surat_masuk ";
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 		return $data;
@@ -88,7 +88,7 @@ class Header_model extends CI_Model {
 
 	public function jumlah_surat_keluar()
 	{
-		$sql = "SELECT COUNT(id) AS jumlah FROM surat_keluar WHERE kode_surat > 1 ";
+		$sql = "SELECT COUNT(id) AS jumlah FROM surat_keluar";
 		$query = $this->db->query($sql);
 		$data = $query->result_array();
 		return $data;
