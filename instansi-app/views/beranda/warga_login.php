@@ -1,15 +1,15 @@
 <div class="col-md-4">
-				<div class="card card-danger box-solid">
-					<div class="card-header">
-						<h3 class="card-title">Mahasiswa Login</h5>
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Mahasiswa Login</h3>
             <div class="card-tools">
-							<?php if ($this->CI->cek_hak_akses('h')): ?>
-                            <a href="<?= site_url('mandiri')?>"><span class="label label-default"> Detail</span></a>
-                            <?php endif; ?>
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove"> <i class="fas fa-times"></i> </button>
-                        </div>
-					</div>
+                <?php if ($this->CI->cek_hak_akses('h')) : ?>
+                    <a href="<?= site_url('mandiri') ?>"><span class="label label-default"> Detail</span></a>
+                <?php endif; ?>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"> <i class="fas fa-minus"></i> </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"> <i class="fas fa-times"></i> </button>
+            </div>
+        </div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover mb-0">

@@ -1,8 +1,8 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 ?>
-    <div class="col-md-12">
+<div class="col-md-12">
 
-<div class="row">
+    <div class="row">
         <div class="col-md-2">
             <a href="<?= site_url('web/clear') ?>" class="small-card-footer" title="Lihat Daftar Keluarga">
                 <div class="info-box mb-3">
@@ -75,12 +75,12 @@
             <a href="<?= site_url('sid_core') ?>" title="Lihat Desa">
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-purple elevation-3"><i class="fas fa-camera"></i></span>
-                        <div class="info-box-content">
+                    <div class="info-box-content">
                         <?php foreach ($pegawai as $data) : ?>
                             <span class="info-box-text">Foto</span>
                             <span class="info-box-number"><?= $data['jumlah'] ?> <small></small></span>
                         <?php endforeach; ?>
-                        </div>
+                    </div>
                 </div>
             </a>
         </div>

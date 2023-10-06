@@ -131,6 +131,7 @@ class Sid_Core extends Admin_Controller
 		$nama_provinsi = $provinsi['provinsi'];
 		$data['provinsi'] = $provinsi['provinsi'];
 		$data['id_provinsi'] = $id_provinsi;
+
 		$data['main'] = $this->wilayah_model->list_data_kabkota($id_provinsi);
 		$data['total'] = $this->wilayah_model->total_kabkota($nama_provinsi);
 
@@ -169,7 +170,7 @@ class Sid_Core extends Admin_Controller
 	public function update_kabkota($id_provinsi = '', $id_kabkota = '')
 	{
 		$this->wilayah_model->update_kabkota($id_kabkota);
-		redirect("sid_core/sub_kabkota/$id_provinsi");
+		redirect("sid_core/sub_kabkota/$id_provinsi/$id_kabkota");
 	}
 
 	public function cetak_kabkota($id_provinsi = '')
@@ -246,13 +247,13 @@ class Sid_Core extends Admin_Controller
 	public function insert_kecamatan($id_provinsi = '', $id_kabkota = '')
 	{
 		$this->wilayah_model->insert_kecamatan($id_provinsi, $id_kabkota);
-		redirect("sid_core/sub_kabkota/$id_provinsi/$id_kabkota");
+		redirect("sid_core/sub_kecamatan/$id_provinsi/$id_kabkota");
 	}
 
 	public function update_kecamatan($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '')
 	{
 		$this->wilayah_model->update_kecamatan($id_provinsi, $id_kabkota, $id_kecamatan);
-		redirect("sid_core/sub_kabkota/$id_provinsi/$id_kabkota");
+		redirect("sid_core/sub_kecamatan/$id_provinsi/$id_kabkota/$id_kecamatan");
 	}
 
 	public function cetak_kecamatan($id_provinsi = '')
@@ -281,16 +282,120 @@ class Sid_Core extends Admin_Controller
 
 	// Akhir Data Kecamatan
 
+	// Awal Data Desa / Kelurahan
+	public function sub_desa($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '')
+	{
+		$data_provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		//$data_provinsi = $provinsi['provinsi'];
+		$data['provinsi'] = $provinsi['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+
+		$data_kabkota = $this->wilayah_model->cluster_by_id($id_kabkota);
+		$data['kabkota'] = $data_kabkota['kabkota'];
+		$data['id_kabkota'] = $id_kabkota;
+
+		$data_kecamatan = $this->wilayah_model->cluster_by_id($id_kecamatan);
+		$data['kecamatan'] = $data_kecamatan['kecamatan'];
+		$data['id_kecamatan'] = $id_kecamatan;
+
+		$data['main'] = $this->wilayah_model->list_data_desa($provinsi, $kabkota, $data['kecamatan']);
+		$data['total'] = $this->wilayah_model->total_desa($data_provinsi, $data_kabkota, $data['kecamatan']);
+
+		$this->render('sid/wilayah/wilayah_desa', $data);
+	}
+
+	public function form_desa($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '')
+	{
+		$temp = $this->wilayah_model->cluster_by_id($id_provinsi);
+		//$provinsi = $temp['provinsi'];
+		$data['provinsi'] = $temp['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+
+		$data_kabkota = $this->wilayah_model->cluster_by_id($id_kabkota);
+		$data['kabkota'] = $data_kabkota['kabkota'];
+		$data['id_kabkota'] = $id_kabkota;
+
+		$data_kecamatan = $this->wilayah_model->cluster_by_id($id_kecamatan);
+		$data['kecamatan'] = $data_kecamatan['kecamatan'];
+		$data['id_kecamatan'] = $id_kecamatan;
+
+		$data['penduduk'] = $this->wilayah_model->list_penduduk();
+
+		if ($id_desa) {
+			$temp = $this->wilayah_model->cluster_by_id($id_desa);
+			$data['id_desa'] = $id_desa;
+			$data['desa'] = $temp['desa'];
+			$data['individu'] = $this->wilayah_model->get_penduduk($temp['id_kepala']);
+			$data['form_action'] = site_url("sid_core/update_desa/$id_provinsi/$id_kabkota/$id_kecamatan/$id_desa");
+		} else {
+			$data['desa'] = NULL;
+			$data['form_action'] = site_url("sid_core/insert_desa/$id_provinsi/$id_kabkota/$id_kecamatan");
+		}
+
+		$this->render('sid/wilayah/wilayah_form_desa', $data);
+	}
+
+	public function insert_desa($id_provinsi = '', $id_kabkota = '')
+	{
+		$this->wilayah_model->insert_kecamatan($id_provinsi, $id_kabkota);
+		redirect("sid_core/sub_kabkota/$id_provinsi/$id_kabkota");
+	}
+
+	public function update_desa($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '')
+	{
+		$this->wilayah_model->update_kecamatan($id_provinsi, $id_kabkota, $id_kecamatan);
+		redirect("sid_core/sub_kabkota/$id_provinsi/$id_kabkota");
+	}
+
+	public function cetak_desa($id_provinsi = '')
+	{
+		$provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		$nama_provinsi = $provinsi['provinsi'];
+		$data['provinsi'] = $dusun['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+		$data['main'] = $this->wilayah_model->list_data_kabkota($id_provinsi);
+		$data['total'] = $this->wilayah_model->total_kabkota($nama_provinsi);
+
+		$this->load->view('sid/wilayah/wilayah_kabkota_print', $data);
+	}
+
+	public function excel_desa($id_provinsi = '')
+	{
+		$provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		$nama_provinsi = $provinsi['provinsi'];
+		$data['provinsi'] = $provinsi['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+		$data['main'] = $this->wilayah_model->list_data_rw($id_provinsi);
+		$data['total'] = $this->wilayah_model->total_rw($namanama_provinsi_dusun);
+
+		$this->load->view('sid/wilayah/wilayah_provinsi_excel', $data);
+	}
+
+	// Akhir Data Desa / Kelurahan
+
 
 	//awal sub_dusun
-	public function sub_dusun($id_desa = '')
+	public function sub_dusun($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '', $id_desa = '')
 	{
-		$desa = $this->wilayah_model->cluster_by_id($id_desa);
-		$nama_desa = $desa['desa'];
-		$data['dusun'] = $dusun['dusun'];
-		$data['id_dusun'] = $id_dusun;
-		$data['main'] = $this->wilayah_model->list_data_dusun($id_desa);
-		$data['total'] = $this->wilayah_model->total_dusun($nama_desa);
+		$data_provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		//$data_provinsi = $provinsi['provinsi'];
+		$data['provinsi'] = $provinsi['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+
+		$data_kabkota = $this->wilayah_model->cluster_by_id($id_kabkota);
+		$data['kabkota'] = $data_kabkota['kabkota'];
+		$data['id_kabkota'] = $id_kabkota;
+
+		$data_kecamatan = $this->wilayah_model->cluster_by_id($id_kecamatan);
+		$data['kecamatan'] = $data_kecamatan['kecamatan'];
+		$data['id_kecamatan'] = $id_kecamatan;
+
+		$data_desa = $this->wilayah_model->cluster_by_id($id_desa);
+		$data['desa'] = $data_desa['desa'];
+		$data['id_desa'] = $id_desa;
+
+		$data['main'] = $this->wilayah_model->list_data_dusun($provinsi, $kabkota, $kecamatan, $data['desa']);
+		$data['total'] = $this->wilayah_model->total_dusun($data_provinsi, $data_kabkota, $data_kecamatan, $data['desa']);
 
 		$this->render('sid/wilayah/wilayah_dusun', $data);
 	}
@@ -357,16 +462,34 @@ class Sid_Core extends Admin_Controller
 
 	//alkhir sub_dusun
 
-	public function sub_rw($id_dusun = '')
+	public function sub_rw($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '', $id_desa = '', $id_dusun = '')
 	{
-		$dusun = $this->wilayah_model->cluster_by_id($id_dusun);
-		$nama_dusun = $dusun['dusun'];
-		$data['dusun'] = $dusun['dusun'];
+		$data_provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		//$data_provinsi = $provinsi['provinsi'];
+		$data['provinsi'] = $provinsi['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+
+		$data_kabkota = $this->wilayah_model->cluster_by_id($id_kabkota);
+		$data['kabkota'] = $data_kabkota['kabkota'];
+		$data['id_kabkota'] = $id_kabkota;
+
+		$data_kecamatan = $this->wilayah_model->cluster_by_id($id_kecamatan);
+		$data['kecamatan'] = $data_kecamatan['kecamatan'];
+		$data['id_kecamatan'] = $id_kecamatan;
+
+		$data_desa = $this->wilayah_model->cluster_by_id($id_desa);
+		$data['desa'] = $data_desa['desa'];
+		$data['id_desa'] = $id_desa;
+
+		$data_dusun = $this->wilayah_model->cluster_by_id($id_dusun);
+		$data['dusun'] = $data_dusun['dusun'];
 		$data['id_dusun'] = $id_dusun;
-		$data['main'] = $this->wilayah_model->list_data_rw($id_dusun);
-		$data['total'] = $this->wilayah_model->total_rw($nama_dusun);
+
+		$data['main'] = $this->wilayah_model->list_data_rw($provinsi, $kabkota, $kecamatan, $desa, $data['dusun']);
+		$data['total'] = $this->wilayah_model->total_rw($data_provinsi, $data_kabkota, $data_kecamatan, $data_desa, $data['dusun']);
 
 		$this->render('sid/wilayah/wilayah_rw', $data);
+
 	}
 
 	public function cetak_rw($id_dusun = '')
@@ -393,11 +516,26 @@ class Sid_Core extends Admin_Controller
 		$this->load->view('sid/wilayah/wilayah_rw_excel', $data);
 	}
 
-	public function form_rw($id_dusun = '', $id_rw = '')
+	public function form_rw($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '', $id_desa = '', $id_dusun = '', $id_rw = '')
 	{
-		$temp = $this->wilayah_model->cluster_by_id($id_dusun);
-		$dusun = $temp['dusun'];
-		$data['dusun'] = $temp['dusun'];
+		$data_provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		$data['provinsi'] = $data_provinsi['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+
+		$data_kabkota = $this->wilayah_model->cluster_by_id($id_kabkota);
+		$data['kabkota'] = $data_kabkota['kabkota'];
+		$data['id_kabkota'] = $id_kabkota;
+
+		$data_kecamatan = $this->wilayah_model->cluster_by_id($id_kecamatan);
+		$data['kecamatan'] = $data_kecamatan['kecamatan'];
+		$data['id_kecamatan'] = $id_kecamatan;
+
+		$data_desa = $this->wilayah_model->cluster_by_id($id_desa);
+		$data['desa'] = $data_desa['desa'];
+		$data['id_desa'] = $id_desa;
+
+		$data_dusun = $this->wilayah_model->cluster_by_id($id_dusun);
+		$data['dusun'] = $data_dusun['dusun'];
 		$data['id_dusun'] = $id_dusun;
 
 		$data['penduduk'] = $this->wilayah_model->list_penduduk();
@@ -407,7 +545,9 @@ class Sid_Core extends Admin_Controller
 			$data['id_rw'] = $id_rw;
 			$data['rw'] = $temp['rw'];
 			$data['individu'] = $this->wilayah_model->get_penduduk($temp['id_kepala']);
-			$data['form_action'] = site_url("sid_core/update_rw/$id_dusun/$id_rw");
+			$data['form_action'] = site_url("sid_core/update_rw/$id_provinsi/$id_kebkota/$id_kecamatan/$id_desa/$id_dusun/$id_rw");
+			//$data['form_action'] = site_url("sid_core/update_rw/$id_dusun/$id_rw");
+
 		} else {
 			$data['rw'] = NULL;
 			$data['form_action'] = site_url("sid_core/insert_rw/$id_dusun");
@@ -422,24 +562,41 @@ class Sid_Core extends Admin_Controller
 		redirect("sid_core/sub_rw/$dusun");
 	}
 
-	public function update_rw($dusun = '', $id_rw = '')
+	public function update_rw($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '', $id_desa = '', $id_dusun = '', $id_rw = '')
 	{
 		$this->wilayah_model->update_rw($id_rw);
-		redirect("sid_core/sub_rw/$dusun");
+		redirect("sid_core/sub_rw/$id_provinsi/$id_kabkota/$id_kecamatan/$id_desa/$id_dusun");
 	}
 
-	public function sub_rt($id_dusun = '', $id_rw = '')
+	public function sub_rt($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '', $id_desa = '', $id_dusun = '', $id_rw = '')
 	{
-		$temp = $this->wilayah_model->cluster_by_id($id_dusun);
-		$dusun = $temp['dusun'];
-		$data['dusun'] = $temp['dusun'];
+		$data_provinsi = $this->wilayah_model->cluster_by_id($id_provinsi);
+		//$data_provinsi = $provinsi['provinsi'];
+		$data['provinsi'] = $provinsi['provinsi'];
+		$data['id_provinsi'] = $id_provinsi;
+
+		$data_kabkota = $this->wilayah_model->cluster_by_id($id_kabkota);
+		$data['kabkota'] = $data_kabkota['kabkota'];
+		$data['id_kabkota'] = $id_kabkota;
+
+		$data_kecamatan = $this->wilayah_model->cluster_by_id($id_kecamatan);
+		$data['kecamatan'] = $data_kecamatan['kecamatan'];
+		$data['id_kecamatan'] = $id_kecamatan;
+
+		$data_desa = $this->wilayah_model->cluster_by_id($id_desa);
+		$data['desa'] = $data_desa['desa'];
+		$data['id_desa'] = $id_desa;
+
+		$data_dusun = $this->wilayah_model->cluster_by_id($id_dusun);
+		$data['dusun'] = $data_dusun['dusun'];
 		$data['id_dusun'] = $id_dusun;
 
 		$data_rw = $this->wilayah_model->cluster_by_id($id_rw);
 		$data['rw'] = $data_rw['rw'];
 		$data['id_rw'] = $id_rw;
-		$data['main'] = $this->wilayah_model->list_data_rt($dusun, $data['rw']);
-		$data['total'] = $this->wilayah_model->total_rt($dusun, $data['rw']);
+
+		$data['main'] = $this->wilayah_model->list_data_rt($provinsi, $kabkota, $kecamatan, $desa, $dusun, $data['rw']);
+		$data['total'] = $this->wilayah_model->total_rt($data_provinsi, $data_kabkota, $data_kecamatan, $data_desa, $data_dusun, $data['rw']);
 
 		$this->render('sid/wilayah/wilayah_rt', $data);
 	}
@@ -476,7 +633,7 @@ class Sid_Core extends Admin_Controller
 		$this->load->view('sid/wilayah/wilayah_rt_excel', $data);
 	}
 
-	public function form_rt($id_dusun = '', $id_rw = '', $rt = '')
+	public function form_rt($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '', $id_desa = '', $id_dusun = '', $id_rw = '', $rt = '')
 	{
 		$temp = $this->wilayah_model->cluster_by_id($id_dusun);
 		$data['dusun'] = $temp['dusun'];
@@ -492,10 +649,10 @@ class Sid_Core extends Admin_Controller
 			$id_cluster = $temp2['id'];
 			$data['rt'] = $temp2['rt'];
 			$data['individu'] = $this->wilayah_model->get_penduduk($temp2['id_kepala']);
-			$data['form_action'] = site_url("sid_core/update_rt/$id_dusun/$id_rw/$id_cluster");
+			$data['form_action'] = site_url("sid_core/update_rt/$id_provinsi/$id_kabkota/$id_kecamatan/$id_desa/$id_dusun/$id_rw/$id_cluster");
 		} else {
 			$data['rt'] = NULL;
-			$data['form_action'] = site_url("sid_core/insert_rt/$id_dusun/$id_rw");
+			$data['form_action'] = site_url("sid_core/insert_rt/$id_provinsi/$id_kabkota/$id_kecamatan/$id_desa/$id_dusun/$id_rw");
 		}
 
 		$this->render('sid/wilayah/wilayah_form_rt', $data);
@@ -507,10 +664,10 @@ class Sid_Core extends Admin_Controller
 		redirect("sid_core/sub_rt/$id_dusun/$id_rw");
 	}
 
-	public function update_rt($dusun = '', $rw = '', $id_cluster = 0)
+	public function update_rt($id_provinsi = '', $id_kabkota = '', $id_kecamatan = '', $id_desa = '', $id_dusun = '', $id_rw = '', $id_cluster = 0)
 	{
 		$this->wilayah_model->update_rt($id_cluster);
-		redirect("sid_core/sub_rt/$dusun/$rw");
+		redirect("sid_core/sub_rt/$id_provinsi/$id_kabkota/$id_kecamatan/Y$id_desa/$id_dusun/$id_rw");
 	}
 
 	public function warga($id = '')

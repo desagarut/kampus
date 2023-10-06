@@ -27,26 +27,14 @@
       <div class="row">
         <?php $this->load->view('beranda/peta.php'); ?>
         <?php $this->load->view('beranda/link_site.php'); ?>
-
       </div>
 
-      <div class='row'>
+      <div class="row">
         <?php $this->load->view('beranda/warga_login.php'); ?>
         <?php $this->load->view('beranda/aparat_login.php'); ?>
         <?php $this->load->view('beranda/pengunjung.php'); ?>
       </div>
 
-      <div class='row'>
-        <?php //$this->load->view('beranda/helpdesk.php'); 
-        ?>
-        <?php //$this->load->view('beranda/changelog.php'); 
-        ?>
-      </div>
-
-      <div class='row'>
-        <?php //$this->load->view('beranda/teks_berjalan.php'); 
-        ?>
-      </div>
     </div>
   </section>
 </div>
