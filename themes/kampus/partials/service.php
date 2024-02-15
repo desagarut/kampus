@@ -8,7 +8,7 @@
                 <a href="http://portal.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <i class="fa fa-3x fa-graduation-cap text-danger mb-4"></i>
                             <h5 class="mb-3">Portal SIAKAD</h5>
                             <p>Portal Sistem Informasi Akademik - Akses untuk dosen, mahasiswa dan staf</p>
                         </div>
@@ -19,7 +19,7 @@
                 <a href="http://elearning.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <i class="fa fa-3x fa-globe text-danger mb-4"></i>
                             <h5 class="mb-3">E-learning</h5>
                             <p>Akses sistem pembelajaran daring, kelas virtual, interaksi dosen & mahasiswa</p>
                         </div>
@@ -30,7 +30,7 @@
                 <a href="http://jurnal.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
+                            <i class="fa fa-3x fa-home text-danger mb-4"></i>
                             <h5 class="mb-3">Jurnal Kampus</h5>
                             <p>Publikasi hasil karya ilmiah dosen & mahasiswa, repository</p>
                         </div>
@@ -41,7 +41,7 @@
                 <a href="http://perpustakaan.sthgarut.ac.id">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
+                            <i class="fa fa-3x fa-book-open text-danger mb-4"></i>
                             <h5 class="mb-3">Perpustakaan</h5>
                             <p>Koleksi buku, jurnal dan data multimedia pendukung pembelajaran</p>
                         </div>

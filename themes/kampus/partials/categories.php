@@ -4,7 +4,7 @@
 <div class="container-xxl py-5 category">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">k o n s e n t r a s i</h6>
+            <h6 class="section-title bg-white text-center text-danger px-3">k o n s e n t r a s i</h6>
             <h1 class="mb-5">Bidang Ilmu</h1>
         </div>
         <div class="row g-3">
@@ -15,7 +15,7 @@
                             <img class="img-fluid" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/cat-1.jpg") ?>" alt="">
                             <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                 <h5 class="m-0">Hukum Perdata</h5>
-                                <small class="text-primary">S1 Ilmu Hukum</small>
+                                <small class="text-danger">S1 Ilmu Hukum</small>
                             </div>
                         </a>
                     </div>
@@ -24,7 +24,7 @@
                             <img class="img-fluid" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/cat-1.jpg") ?>" alt="">
                             <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
                                 <h5 class="m-0">Hukum Tata Usaha Negara</h5>
-                                <small class="text-primary">S1 Ilmu Hukum</small>
+                                <small class="text-danger">S1 Ilmu Hukum</small>
                             </div>
                         </a>
                     </div>
@@ -35,7 +35,7 @@
                     <img class="img-fluid position-absolute w-100 h-100" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/cat-4.jpg") ?>" alt="" style="object-fit: cover;">
                     <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
                         <h5 class="m-0">Hukum Pidana</h5>
-                        <small class="text-primary">S1 Ilmu Hukum</small>
+                        <small class="text-danger">S1 Ilmu Hukum</small>
                     </div>
                 </a>
             </div>
