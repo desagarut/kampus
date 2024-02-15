@@ -41,7 +41,7 @@
                 </div>
                 <?= tgl_indo($article['tgl_upload']) ?> - <?= $article['owner'] ?><br />
                 <a class="btn btn-danger py-3 px-5 mt-2" href="<?= $url ?>">Selengkapnya</a>
-                <a class="btn btn-danger py-3 px-5 mt-2" href="<?= site_url('arsip') ?>">Semua Berita</a>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="<?= site_url('arsip') ?>">Semua Berita</a>
 
             </div>
         </div>
