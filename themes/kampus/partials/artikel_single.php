@@ -28,7 +28,7 @@
 
 					<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 						<div class="course-item bg-light">
-							<div class="position-relative overflow-hidden text-center">
+							<div class="position-relative overflow-hidden text-center shadow">
 								<?php if ($article['gambar']) : ?>
 									<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar' . $i], 'sedang') ?>" alt="<?= $article['judul'] ?>">
 								<?php else : ?>
