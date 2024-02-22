@@ -1,4 +1,4 @@
-<?php class Web_gallery_model extends MY_Model {
+<?php class Web_gallery_cctv_model extends MY_Model {
 
 	private $urut_model;
 
@@ -6,12 +6,12 @@
 	{
 		parent::__construct();
 	  require_once APPPATH.'/models/Urut_model.php';
-		$this->urut_model = new Urut_Model('gambar_gallery');
+		$this->urut_model = new Urut_Model('gallery_cctv');
 	}
 
 	public function autocomplete()
 	{
-		return $this->autocomplete_str('nama', 'gambar_gallery');
+		return $this->autocomplete_str('nama', 'gallery_cctv');
 	}
 
 	private function search_sql()
@@ -21,7 +21,7 @@
 			$cari = $_SESSION['cari'];
 			$kw = $this->db->escape_like_str($cari);
 			$kw = '%' .$kw. '%';
-			$search_sql= " AND (gambar LIKE '$kw' OR nama LIKE '$kw')";
+			$search_sql= " AND (link LIKE '$kw' OR nama LIKE '$kw')";
 			return $search_sql;
 		}
 	}
@@ -54,7 +54,7 @@
 
 	private function list_data_sql()
 	{
-		$sql = " FROM gambar_gallery WHERE tipe = 0  ";
+		$sql = " FROM gallery_cctv WHERE tipe = 0  ";
 		$sql .= $this->search_sql();
 		$sql .= $this->filter_sql();
 		return $sql;
@@ -111,6 +111,9 @@
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi karakter yg diizinkan seperti pada nomor sk
 		$data['urut'] = $this->urut_model->urut_max(array('parrent' => 0)) + 1;
+		$data['link'] = $this->input->post('link'); //link CCTV
+		$data['deskripsi'] = $this->input->post('deskripsi'); //deskripsi CCTV
+
 		// Bolehkan album tidak ada gambar cover
 		if (!empty($lokasi_file))
 		{
@@ -129,7 +132,7 @@
 			$data['enabled'] = 2;
 		}
 
-		$outp = $this->db->insert('gambar_gallery', $data);
+		$outp = $this->db->insert('gallery_cctv', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
@@ -147,6 +150,8 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi karakter yg diizinkan seperti pada nomor sk
+		$data['link'] = $this->input->post('link'); //pastikan link di tulis lengkap
+		$data['deskripsi'] = $this->input->post('deskripsi'); //deskripsi cctv
 		// Kalau kosong, gambar tidak diubah
 		if (!empty($lokasi_file))
 		{
@@ -166,7 +171,7 @@
 		}
 
 		unset($data['old_gambar']);
-		$outp = $this->db->where('id', $id)->update('gambar_gallery', $data);
+		$outp = $this->db->where('id', $id)->update('gallery_cctv', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
@@ -175,10 +180,10 @@
 		if (!$semua) $this->session->success = 1;
 
 		$this->delete($id);
-		$sub_gallery = $this->db->select('id')->
+		$sub_cctv = $this->db->select('id')->
 			where('parrent', $id)->
-			get('gambar_gallery')->result_array();
-		foreach ($sub_gallery as $gallery)
+			get('gallery_cctv')->result_array();
+		foreach ($sub_cctv as $gallery)
 		{
 			$this->delete($gallery['id']);
 		}
@@ -205,7 +210,7 @@
 		// judul gallery
 		$this->delete_gallery_image($id);
 
-		$outp = $this->db->where('id', $id)->delete('gambar_gallery');
+		$outp = $this->db->where('id', $id)->delete('gallery_cctv');
 
 		status_sukses($outp, $gagal_saja=true); //Tampilkan Pesan
 	}
@@ -223,15 +228,9 @@
 
 	public function delete_gallery_image($id)
 	{
-		$image = $this->db->select('gambar')->
-			get_where('gambar_gallery', array('id'=>$id))->
-			row()->gambar;
-		$prefix = array('kecil_', 'sedang_');
-		foreach ($prefix as $pref)
-		{
-			if (is_file(FCPATH . LOKASI_GALERI . $pref . $image))
-				unlink(FCPATH . LOKASI_GALERI . $pref . $image);
-		}
+		$image = $this->db->select('link')->
+			get_where('gallery_cctv', array('id'=>$id))->
+			row()->link;
 	}
 
 	public function gallery_lock($id='', $val=0)
@@ -248,7 +247,7 @@
 		$outp = $this->db
 			->where('id', $id)
 			->set('enabled', $val)
-			->update('gambar_gallery');
+			->update('gallery_cctv');
 		status_sukses($outp); //Tampilkan Pesan
 	}
 
@@ -259,18 +258,18 @@
 			// Hanya satu gallery yang boleh tampil di slider
 			$this->db->where('slider', 1)
 				->set('slider', 0)
-				->update('gambar_gallery');
+				->update('gallery_cctv');
 			// Aktifkan galeri kalau digunakan untuk slider
 			$this->db->set('enabled', 1);
 		}
 		$this->db->where('id', $id)
 			->set('slider', $val)
-			->update('gambar_gallery');
+			->update('gallery_cctv');
 	}
 
 	public function get_gallery($id=0)
 	{
-		$sql = "SELECT * FROM gambar_gallery WHERE id = ?";
+		$sql = "SELECT * FROM gallery_cctv WHERE id = ?";
 		$query = $this->db->query($sql, $id);
 		$data = $query->row_array();
 		return $data;
@@ -281,18 +280,18 @@
 		$gallery_slide_id = $this->db->select('id')
 			->where('slider', 1)
 			->limit(1)
-			->get('gambar_gallery')->row()->id;
-		$slide_galeri = $this->db->select('id, nama as judul, gambar')
+			->get('gallery_cctv')->row()->id;
+		$slide_galeri = $this->db->select('id, nama as judul, link')
 			->where('parrent', $gallery_slide_id)
 			->where('tipe', 2)
 			->where('enabled', 1)
-			->get('gambar_gallery')->result_array();
+			->get('gallery_cctv')->result_array();
 		return $slide_galeri;
 	}
 
 	public function paging2($gal=0, $p=1)
 	{
-		$sql = "SELECT COUNT(*) AS jml " . $this->list_sub_gallery_sql();
+		$sql = "SELECT COUNT(*) AS jml " . $this->list_sub_cctv_sql();
 		$query = $this->db->query($sql,$gal);
 		$row = $query->row_array();
 		$jml_data = $row['jml'];
@@ -306,15 +305,15 @@
 		return $this->paging;
 	}
 
-	private function list_sub_gallery_sql()
+	private function list_sub_cctv_sql()
 	{
-		$sql = " FROM gambar_gallery WHERE parrent = ? AND tipe = 2 ";
+		$sql = " FROM gallery_cctv WHERE parrent = ? AND tipe = 2 ";
 		$sql .= $this->search_sql();
 		$sql .= $this->filter_sql();
 		return $sql;
 	}
 
-	public function list_sub_gallery($gal=1, $o=0, $offset=0, $limit=500)
+	public function list_sub_cctv($gal=1, $o=0, $offset=0, $limit=500)
 	{
 		switch($o)
 		{
@@ -329,7 +328,7 @@
 
 		$paging_sql = ' LIMIT ' .$offset. ',' .$limit;
 
-		$sql = "SELECT * " . $this->list_sub_gallery_sql();
+		$sql = "SELECT * " . $this->list_sub_cctv_sql();
 		$sql .= $order_sql;
 		$sql .= $paging_sql;
 		$query = $this->db->query($sql, $gal);
@@ -347,7 +346,7 @@
 		return $data;
 	}
 
-	public function insert_sub_gallery($parrent=0)
+	public function insert_sub_cctv($parrent=0)
 	{
 		$_SESSION['success'] = 1;
 		$_SESSION['error_msg'] = '';
@@ -362,6 +361,8 @@
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
 		$data['urut'] = $this->urut_model->urut_max(array('parrent' => $parrent)) + 1;
+		$data['link'] = $this->input->post('link'); //pastikan link di tulis lengkap
+		$data['deskripsi'] = $this->input->post('deskripsi'); //deskripsi cctv
 		// Bolehkan isi album tidak ada gambar
 		if (!empty($lokasi_file))
 		{
@@ -382,11 +383,11 @@
 
 		$data['parrent'] = $parrent;
 		$data['tipe'] = 2;
-		$outp = $this->db->insert('gambar_gallery', $data);
+		$outp = $this->db->insert('gallery_cctv', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
-	public function update_sub_gallery($id=0)
+	public function update_sub_cctv($id=0)
 	{
 		$_SESSION['success'] = 1;
 		$_SESSION['error_msg'] = '';
@@ -400,6 +401,8 @@
 	  $tipe_file = TipeFile($_FILES['gambar']);
 		$data = [];
 		$data['nama'] = nomor_surat_keputusan($this->input->post('nama')); //pastikan nama album hanya berisi
+		$data['link'] = $this->input->post('link'); //pastikan link di tulis lengkap
+		$data['deskripsi'] = $this->input->post('deskripsi'); //deskripsi cctv
 		// Kalau kosong, gambar tidak diubah
 		if (!empty($lokasi_file))
 		{
@@ -414,7 +417,7 @@
 		}
 
 		unset($data['old_gambar']);
-		$outp = $this->db->where('id', $id)->update('gambar_gallery', $data);
+		$outp = $this->db->where('id', $id)->update('gallery_cctv', $data);
 		if (!$outp) $_SESSION['success'] = -1;
 	}
 
@@ -423,8 +426,7 @@
 	// 		2 - naik
 	public function urut($id, $arah, $gallery='')
 	{
-  	$subset = !empty($gallery) ? array('parrent' => $gallery) : array('parrent' => 0);
+  	$subset = !empty($gallery_cctv) ? array('parrent' => $gallery) : array('parrent' => 0);
   	$this->urut_model->urut($id, $arah, $subset);
 	}
 }
-?>

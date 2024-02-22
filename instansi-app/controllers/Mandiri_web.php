@@ -15,8 +15,6 @@ class Mandiri_web extends Mandiri_Controller
 		$this->cek_anjungan = $this->anjungan_model->cek_anjungan();
 		
 		$this->load->library('upload');
-		$this->load->model('perencanaan_desa_model', 'model');
-		$this->load->model('perencanaan_desa_dok_model');
 		$this->load->model('referensi_model');
 		$this->load->model('config_model');
 		$this->load->model('wilayah_model');

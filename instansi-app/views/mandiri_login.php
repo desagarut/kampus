@@ -64,7 +64,7 @@
       <div class="card-body login-card-body">
         <div class="brand-wrapper" align="center"> <a href="<?= site_url('first'); ?>"><img src="<?= gambar_institusi($header['logo']); ?>" alt="<?= $header['nama_kecamatan'] ?>" class="img-responsive" /></a> </div>
         <p class="login-box-msg">
-          LOGIN MAHASISWA<br/>
+          LOGIN MAHASISWA<br />
           <?= strtoupper($this->setting->website_title) ?>
         </p>
 
@@ -99,7 +99,7 @@
             <?php endif; ?>
           <?php endif; ?>
         </form>
-        <div class="col-md-12" align="center"> <a href="<?= site_url('insidega'); ?>">login Manajemen </a> | <a href="<?= site_url('first'); ?>"> Ke Beranda</a> </div>
+        <div class="col-md-12" align="center"> <a class="btn btn-success btn-sm" href="<?= site_url('first'); ?>"> Ke Beranda</a> | <a class="btn btn-info btn-sm" href="<?= site_url('insidega'); ?>">login Manajemen </a></div>
       </div>
     </div>
     <div class="credit text-center" style="color:black"> &copy; <a href="#">

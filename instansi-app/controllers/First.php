@@ -67,6 +67,12 @@ class First extends Web_Controller {
 		$this->load->model('web_widget_model');
 		$this->load->model('web_gallery_model');
 		$this->load->model('web_dokumen_model');
+
+		//update v 5.5.5
+		$this->load->model('first_gallery_youtube');
+		//update v 5.7.0
+		$this->load->model('first_cctv_m');
+
 		
 		$this->load->library('upload');
 	}
@@ -83,6 +89,8 @@ class First extends Web_Controller {
 		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
 		$data['pages'] = range($data['start_paging'], $data['end_paging']);
 		$data['artikel'] = $this->first_artikel_m->artikel_show($data['paging']->offset, $data['paging']->per_page);
+		$data['cctv'] = $this->first_cctv_m->cctv($data['paging']->offset, $data['paging']->per_page);
+		$data['gallery'] = $this->first_gallery_youtube->gallery_show($data['paging']->offset, $data['paging']->per_page);
 
 		$data['headline'] = $this->first_artikel_m->get_headline();
 		$data['cari'] = htmlentities($this->input->get('cari'));
@@ -160,6 +168,9 @@ class First extends Web_Controller {
 		$data['title'] = ucwords($data['single_artikel']['judul']);
 		$data['detail_agenda'] = $this->first_artikel_m->get_agenda($id);//Agenda
 		$data['komentar'] = $this->first_artikel_m->list_komentar($id);
+		$data['gallery_youtube'] = $this->first_gallery_youtube->gallery_show();
+		$data['gallery'] = $this->first_gallery_m->gallery_show();
+
 		$this->_get_common_data($data);
 
 		// Validasi pengisian komentar di add_comment()
@@ -182,6 +193,8 @@ class First extends Web_Controller {
 		$data['p'] = $p;
 		$data['paging'] = $this->first_artikel_m->paging_arsip($p);
 		$data['farsip'] = $this->first_artikel_m->full_arsip($data['paging']->offset,$data['paging']->per_page);
+		$data['gallery_youtube'] = $this->first_gallery_youtube->gallery_show($data['paging']->offset, $data['paging']->per_page);
+		$data['gallery'] = $this->first_gallery_m->gallery_show($data['paging']->offset, $data['paging']->per_page);
 
 		$this->_get_common_data($data);
 
@@ -1043,4 +1056,85 @@ class First extends Web_Controller {
 		$this->set_template('layouts/tukang_layanan.tpl.php');
 		$this->load->view($this->template, $data);
 	}
+
+	// Halaman arsip album galeri youtube
+	public function gallery_youtube($p = 1)
+	{
+		$data = $this->includes;
+		$data['p'] = $p;
+		$data['paging'] = $this->first_gallery_youtube->paging($p);
+		$data['paging_range'] = 3;
+		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
+		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
+		$data['pages'] = range($data['start_paging'], $data['end_paging']);
+		$data['gallery_youtube'] = $this->first_gallery_youtube->gallery_show($data['paging']->offset, $data['paging']->per_page);
+
+		$this->_get_common_data($data);
+
+		$this->set_template('layouts/gallery_youtube.tpl.php');
+		$this->load->view($this->template, $data);
+	}
+
+	// halaman rincian tiap album galeri
+	public function sub_gallery_youtube($gal = 0, $p = 1)
+	{
+		$data = $this->includes;
+		$data['p'] = $p;
+		$data['gal'] = $gal;
+		$data['paging'] = $this->first_gallery_youtube->paging2($gal, $p);
+		$data['paging_range'] = 3;
+		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
+		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
+		$data['pages'] = range($data['start_paging'], $data['end_paging']);
+		$data['gallery_youtube'] = $this->first_gallery_youtube->gallery_show($data['paging']->offset, $data['paging']->per_page);
+		$data['gallery'] = $this->first_gallery_youtube->sub_gallery_show($gal, $data['paging']->offset, $data['paging']->per_page);
+		$data['parrent'] = $this->first_gallery_youtube->get_parrent($gal);
+		$data['mode'] = 1;
+
+		$this->_get_common_data($data);
+
+		$this->set_template('layouts/sub_gallery_youtube.tpl.php');
+		$this->load->view($this->template, $data);
+	}
+
+	//update v 5.7
+	public function cctv($p = 1)
+	{
+		$data = $this->includes;
+		$data['p'] = $p;
+		$data['paging'] = $this->first_cctv_m->paging($p);
+		$data['paging_range'] = 3;
+		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
+		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
+		$data['pages'] = range($data['start_paging'], $data['end_paging']);
+		$data['cctv'] = $this->first_cctv_m->cctv($data['paging']->offset, $data['paging']->per_page);
+
+		$this->_get_common_data($data);
+
+		$this->set_template('layouts/cctv.tpl.php');
+		$this->load->view($this->template, $data);
+	}
+
+	// halaman rincian tiap Kamera CCTV
+	public function cctv_sub($gal = 0, $p = 1)
+	{
+		$data = $this->includes;
+		$data['p'] = $p;
+		$data['gal'] = $gal;
+		$data['paging'] = $this->first_cctv_m->paging2($gal, $p);
+		$data['paging_range'] = 3;
+		$data['start_paging'] = max($data['paging']->start_link, $p - $data['paging_range']);
+		$data['end_paging'] = min($data['paging']->end_link, $p + $data['paging_range']);
+		$data['pages'] = range($data['start_paging'], $data['end_paging']);
+		$data['cctv'] = $this->first_cctv_m->cctv($data['paging']->offset, $data['paging']->per_page);
+		$data['cctv_sub'] = $this->first_cctv_m->cctv_sub($gal, $data['paging']->offset, $data['paging']->per_page);
+		$data['parrent'] = $this->first_cctv_m->get_parrent($gal);
+		$data['mode'] = 1;
+
+		$this->_get_common_data($data);
+
+		$this->set_template('layouts/cctv_sub.tpl.php');
+		$this->load->view($this->template, $data);
+	}
+
 }

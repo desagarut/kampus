@@ -36,11 +36,8 @@
 						<li class="breadcrumb-item active">Data Kependudukan</li>
 					</ol>
 				</div>
-				<!-- /.col -->
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container-fluid -->
 	</div>
 	<!-- /.content-header -->
 
