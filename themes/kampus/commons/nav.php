@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="<?= site_url('first') ?>" class="nav-item nav-link active">Home</a>
+            <a href="<?= site_url('first') ?>" class="nav-item nav-link">HOME</a>
             <?php if (menu_atas) : ?>
                 <?php foreach ($menu_atas as $menu) : ?>
 
@@ -31,7 +31,7 @@
                 <?php endforeach ?>
             <?php endif ?>
         </div>
-        <a href="<?= site_url('mandiri_web') ?>" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">LOGIN<i class="fa fa-arrow-right ms-3"></i></a>
+        <a href="http://siakad.sthgarut.ac.id/index.php/pendaftaran_pmb" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">DAFTAR PMB<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
 </nav>
 <!-- Navbar End -->

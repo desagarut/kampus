@@ -21,22 +21,22 @@
                 <p class="mb-4"><?= $abstract ?></p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i>Skilled Instructors</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i><a href="http://siakad.sthgarut.ac.id/index.php/pendaftaran_pmb">Pendaftaran Mahasiswa Baru</a></p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i>Online Classes</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i><a href="https://edlink.id/login">E-Learning</a></p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i>International Certificate</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i><a href="http://jurnal.sthgarut.ac.id">Jurnal Kampus</a></p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i>Skilled Instructors</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i><a href="http://perpustakaan.sthgarut.ac.id">Perpustakaan</a></p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i>Online Classes</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i><a href="https://edlink.id/login">E-Learning</a></p>
                     </div>
                     <div class="col-sm-6">
-                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i>International Certificate</p>
+                        <p class="mb-0"><i class="fa fa-arrow-right text-danger me-2"></i><a href="http://jurnal.sthgarut.ac.id">Jurnal Kampus</a></p>
                     </div>
                 </div>
                 <?= tgl_indo($article['tgl_upload']) ?> - <?= $article['owner'] ?><br />

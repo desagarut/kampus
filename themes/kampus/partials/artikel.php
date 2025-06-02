@@ -9,7 +9,7 @@
 				<main id="gallery">
 					<div class="main-img text-center">
 						<?php if ($article['gambar']) : ?>
-							<img src="<?= AmbilFotoArtikel($article['gambar'], 'sedang') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:contain;">
+							<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar'], 'sedang') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:contain;">
 						<?php else : ?>
 							<img class="img-fluid" src="<?= base_url() ?>themes/kampus/assets/img/noimage.png" alt="Belum Ada Gambar" style="object-fit: cover;">
 						<?php endif ?>
@@ -35,6 +35,13 @@
 											<?= $article['link_dokumen'] ?>
 										</span> </a> </div>
 							<?php endif ?>
+                            <?php if ($article['gambar']) : ?>
+                            <div class="row">
+                            <div class="col-md-12 text-center">
+							<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar1'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
+                        <img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar2'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
+                        <img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar3'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
+						<?php endif ?> </div></div>
 							</p>
 							</div>
 							<div class="entry-footer clearfix">

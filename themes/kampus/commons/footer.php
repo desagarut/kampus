@@ -4,11 +4,11 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="http://portal.sthgarut.ac.id:8060">Siakad</a>
-                    <a class="btn btn-link" href="https://sister.lldikti4.id">Sister</a>
-                    <a class="btn btn-link" href="http://portal.sthgarut.ac.id:8100">Neo Feeder</a>
+                    <a class="btn btn-link" href="http://siakad.sthgarut.ac.id">SIAKAD</a>
+                    <a class="btn btn-link" href="https://sister.kemdikbud.go.id">Sister</a>
+                    <a class="btn btn-link" href="http://neofeeder.sthgarut.ac.id">NeoFeeder</a>
                     <a class="btn btn-link" href="https://pddikti.kemdikbud.go.id">PDDIKTI</a>
-                    <a class="btn btn-link" href="https://pin.kemdikbud.go.id">P I N</a>
+                    <a class="btn btn-link" href="https://pisn.kemdiktisaintek.go.id">P I S N</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
@@ -23,8 +23,27 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Pengunjung</h4>
-                    <?php $this->load->view($folder_themes . '/widgets/statistik_pengunjung') ?>
+                    <h4 class="text-white mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/course-1.jpg")?>" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/course-2.jpg")?>" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/course-3.jpg")?>" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/course-2.jpg")?>" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/course-3.jpg")?>" alt="">
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid bg-light p-1" src="<?= base_url("$this->theme_folder/$this->theme/assets/img/course-1.jpg")?>" alt="">
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Newsletter</h4>
@@ -64,10 +83,10 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/wow/wow.min.js") ?>"></script>
-    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/easing/easing.min.js") ?>"></script>
-    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/waypoints/waypoints.min.js") ?>"></script>
-    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/owlcarousel/owl.carousel.min.js") ?>"></script>
+    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/wow/wow.min.js")?>"></script>
+    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/easing/easing.min.js")?>"></script>
+    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/waypoints/waypoints.min.js")?>"></script>
+    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/lib/owlcarousel/owl.carousel.min.js")?>"></script>
 
     <!-- Template Javascript -->
-    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/js/main.js") ?>"></script>
+    <script src="<?= base_url("$this->theme_folder/$this->theme/assets/js/main.js")?>"></script>
