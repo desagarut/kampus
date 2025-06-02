@@ -22,7 +22,7 @@
 						<div class="col-md-12">
 							<div class="info-body custom-responsive-margin mt-4">
 								<h4> <a href="#">
-										<?= $article['judul'] ?>
+										<?= strtoupper($article['judul']) ?>
 									</a> </h4>
 							</div>
 							<div class="entry-content">
