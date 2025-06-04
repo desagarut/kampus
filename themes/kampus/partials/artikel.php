@@ -35,13 +35,21 @@
 											<?= $article['link_dokumen'] ?>
 										</span> </a> </div>
 							<?php endif ?>
-                            <?php if ($article['gambar']) : ?>
-                            <div class="row">
-                            <div class="col-md-12 text-center">
-							<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar1'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
-                        <img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar2'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
-                        <img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar3'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
-						<?php endif ?> </div></div>
+							<?php if ($article['gambar']) : ?>
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<?php if ($article['gambar1']) : ?>
+											<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar1'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
+										<?php endif ?>
+										<?php if ($article['gambar1']) : ?>
+											<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar2'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
+										<?php endif ?>
+										<?php if ($article['gambar1']) : ?>
+											<img class="img-fluid" src="<?= AmbilFotoArtikel($article['gambar3'], 'kecil') ?>" alt="<?= $article['judul'] ?>" id="current" style="object-fit:cover; height: 250px; width: 250px; padding: 10px 10px 10px 10px">
+										<?php endif ?>
+									</div>
+								</div>
+							<?php endif ?>
 							</p>
 							</div>
 							<div class="entry-footer clearfix">
